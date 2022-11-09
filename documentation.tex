@@ -32,25 +32,54 @@
 
 \maketitle
 
+
+
+% -   Title
+% -   Table of Content
+% -   Preface
+% -   Acknowledgements
+% -   Summary
+% -   Resume
+% -   List of publications
+% -   Introduction
+%     -   XXX
+%     -   Paper 1
+%     -   Paper 2
+%     -   Paper 3
+%     -   Paper 4
+%     -   Bibliography
+
+
+% -   Paper 1
+% -   Paper 2
+% -   Paper 3
+% -   Paper 4
+% -   Appendix
+
+
 \frontmatter
-\include{frontmatter/abstract.tex}
-\include{frontmatter/acknowledgements.tex}
-
 \tableofcontents
-\listoffigures
-\listoftables
-\listoflistings
+% \part{}
+\include{frontmatter/preface.tex}
+\include{frontmatter/acknowledgements.tex}
+\include{frontmatter/abstract.tex}
+\include{frontmatter/dansk-abstract.tex}
+\include{frontmatter/publications.tex}
 
+% \listoffigures
+% \listoftables
+% \listoflistings
 
+% \part{}
 \mainmatter
 \include{mainmatter/chapter1.tex}
-\include{mainmatter/chapter2.tex}
-
-\include{mainmatter/appendix.tex}
-
-
-\backmatter
+% \include{mainmatter/chapter2.tex}
 \include{backmatter/bibliography.tex}
-\include{backmatter/index.tex}
+
+
+% \part{}
+\backmatter
+\include{mainmatter/appendix.tex}
+% \include{backmatter/index.tex}
 
 \end{document}
