@@ -1,0 +1,59 @@
+\documentclass{article}
+\usepackage{eso-pic,graphicx}
+\usepackage[top=2cm, bottom=2cm, outer=0cm, inner=0cm]{geometry}
+
+\definecolor{KU}{HTML}{901A1E}
+
+\begin{document}
+
+
+\begin{titlepage}
+
+    \AddToShipoutPictureBG*{\includegraphics[width=\paperwidth,height=\paperheight]{CustomFrontpage.pdf}}
+
+    \begin{center}
+        \vspace*{5.5cm}
+
+        \LARGE
+        \textsc{Ph.D. Thesis}
+
+
+        \vspace{1.5cm}
+        \Huge
+        \textbf{Biological Data Science} \\
+        \vspace{0.5cm}
+        \normalsize
+        DNA, epidemics, and knee operations, and other bio related stuff.
+
+        \normalsize
+
+        \vspace{5cm}
+        \begin{center}
+            {\renewcommand{\arraystretch}{1.5}% for the vertical padding
+                \begin{tabular}{ r l }
+                    \emph{Author:}     & \textcolor{KU}{Christian Michelsen}   \\
+                    \emph{Advisor:}    & \textcolor{KU}{Troels Petersen}       \\
+                    \emph{Co-Advisor:} & \textcolor{KU}{Thorfinn Korneliussen} \\
+                \end{tabular}
+            }
+        \end{center}
+
+        \vspace{1cm}
+        \emph{This thesis has been submitted to the PhD School of The Faculty of Science, University of Copenhagen}
+
+
+        \vspace{1cm}
+        Experimental Particle Physics, \\
+        Niels Bohr Institute \\
+        \vspace{0.2cm}
+        Section of GeoGenetics, \\
+        GLOBE Institute
+
+        \vfill
+        \emph{Submitted:} \textcolor{KU}{\today}
+
+
+    \end{center}
+\end{titlepage}
+
+\end{document}

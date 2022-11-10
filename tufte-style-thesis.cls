@@ -300,7 +300,7 @@
 
 % 	Doctoral thesis (subsubtitle)
 \newcommand\type[1]{\renewcommand\@type{#1}}
-\newcommand\@type{Doctoral thesis}
+\newcommand\@type{\textsc{Ph.D. Thesis}}
 
 % 	shoutouts
 \newcommand\shoutouts[1]{\renewcommand\@shoutouts{#1}}
@@ -311,9 +311,12 @@
 	\makeatletter
 	\setstretch{1.0}
 	\begin{titlepage}
+
+		\AddToShipoutPictureBG*{\includegraphics[width=\paperwidth,height=\paperheight]{frontpage/CustomFrontpage.pdf}}
+
 		% \setcounter{page}{1}
 		\hfill
-		\begin{minipage}{.8\linewidth}
+		\begin{minipage}{0.7\linewidth}
 		\raggedleft
 
 		{\large\scshape
@@ -326,12 +329,19 @@
 
 		\vskip 80pt
 
-		{\large\itshape\@author}
+		% {A\\}%
+		% \vskip 8pt
+		{\huge \@type\\}%
+		{by\\}%
+		% \vskip 8pt
+		{\Large\itshape\@author}%
+		% \vskip 8pt
+
 
 		\vskip 40 pt
 
 		{%
-			\huge
+			\Huge
 			\if@colorful
 				\color{niceRed}
 			\else
@@ -345,11 +355,15 @@
 
 		\vskip 20pt
 
-		{\Large \@type}%
+		% {\Large \@type}%
 
-		\vskip 40pt
+		\vskip 60pt
 
-		{\itshape\@date}
+		{\itshape Submitted: \@date}
+
+		\vskip 20pt
+
+		\emph{This thesis has been submitted to the \\PhD School of The Faculty of Science, \\University of Copenhagen}
 
 		\end{minipage}
 
@@ -361,9 +375,8 @@
 			\people{}
 		\end{tabular}
 
-		\vskip 40pt
-
-		\logos{}
+		% \vskip 40pt
+		% \logos{}
 
 	\end{titlepage}
 
