@@ -6,12 +6,12 @@
 
 %	package inclusions for this specific documentation file. the .cls does not neet them.
 \usepackage{lipsum}		% the chad package
-\usepackage{textgreek}	% for greek
-\usepackage{imakeidx}	% for index
-\usepackage{multicol}
-\makeindex[columns=3]
+\usepackage{pdfpages}
 
-\addbibresource{refs.bib} % for biblatex
+% Update to your bibliography file
+% \addbibresource{references.bib}
+\addbibresource{bibliography.bib}
+
 
 % INFO : used in the titlepage, copyright and stuff.
 \author{Christian Stentoft Michelsen}
@@ -26,35 +26,11 @@
 % \logo{example-image-a}
 % \logo{example-image-b}
 % \logo{example-image-c}
-\shoutouts{Til de to kvinder i mit liv}
+\shoutouts{Til kvinderne i mit liv}
 
 \begin{document}
 
 \maketitle
-
-
-
-% -   Title
-% -   Table of Content
-% -   Preface
-% -   Acknowledgements
-% -   Summary
-% -   Resume
-% -   List of publications
-% -   Introduction
-%     -   XXX
-%     -   Paper 1
-%     -   Paper 2
-%     -   Paper 3
-%     -   Paper 4
-%     -   Bibliography
-
-
-% -   Paper 1
-% -   Paper 2
-% -   Paper 3
-% -   Paper 4
-% -   Appendix
 
 
 \tableofcontents
@@ -73,15 +49,18 @@
 % \part{}
 \mainmatter
 \include{mainmatter/introduction.tex}
+\include{backmatter/bibliography.tex}
 \include{mainmatter/paper-dna.tex}
 \include{mainmatter/paper-hospital.tex}
 \include{mainmatter/paper-covid.tex}
 \include{mainmatter/paper-diffusion.tex}
-\include{backmatter/bibliography.tex}
-
 
 % \part{}
 \backmatter
+
+% \clearpage
+% \printbibliography
+
 % \include{mainmatter/appendix.tex}
 % \include{backmatter/index.tex}
 

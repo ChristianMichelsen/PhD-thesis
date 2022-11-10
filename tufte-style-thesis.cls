@@ -108,18 +108,22 @@
 \RequirePackage{placeins}		% for floatbarrier
 \RequirePackage{xparse}
 \RequirePackage{xpatch}
-\RequirePackage[
-	% doi=false,
-	% isbn=false,
+\RequirePackage[				% use biblatex for bibliography
 	% url=false,
-	autocite 	= superscript,
-	backend 	= biber,
-	citestyle 	= numeric-comp,
-	style 		= nature,
-	% citecolor   = niceBlue,
-	sorting		= none,
-	bibencoding = utf8,
+	% citestyle 	= numeric-comp,
+	% sorting		= none,
+	doi=true,
+	backend=biber,				% use biber or bibtex backend
+	style=authoryear,   		% choose style
+	hyperref=true,	    		% activate hyperref support
+	natbib=true,				% allow natbib commands
+	alldates=year,      		% only show year (not month)
+	autocite=inline,			% parencite-like citations
+	sorting=nyt,				% sort by  name, year, title.
+	% maxbibnames=5,				% max number of authors
+	% minbibnames=2,				% min number of authors
 ]{biblatex}
+
 \RequirePackage{csquotes}
 %%% TEST footmisc
 \RequirePackage[
@@ -617,25 +621,25 @@
 
 %	B I B L I O G R A P H I C
 %	      R E F E R E N C E S  %this is black magic to me but it seems 2b working
-\makeatletter
-\newcommand\sidecite[2][]{\autocite{#2}\sidetext{\ifthenelse{\equal{#1}{}}{}{\vskip #1}%
-\@for\cle:={#2}\do{\makebox[0pt][r]{\autocite{\cle}}\fullcite{\cle}.\\\vskip 4pt}%
-}}
-\newcommand\sidetextcite[2][]{\sidetext{\ifthenelse{\equal{#1}{}}{}{\vskip #1}%
-\@for\cle:={#2}\do{\makebox[0pt][r]{\autocite{\cle}}\fullcite{\cle}.\\\vskip 4pt}%
-}}
-\makeatother
+% \makeatletter
+% \newcommand\sidecite[2][]{\autocite{#2}\sidetext{\ifthenelse{\equal{#1}{}}{}{\vskip #1}%
+% \@for\cle:={#2}\do{\makebox[0pt][r]{\autocite{\cle}}\fullcite{\cle}.\\\vskip 4pt}%
+% }}
+% \newcommand\sidetextcite[2][]{\sidetext{\ifthenelse{\equal{#1}{}}{}{\vskip #1}%
+% \@for\cle:={#2}\do{\makebox[0pt][r]{\autocite{\cle}}\fullcite{\cle}.\\\vskip 4pt}%
+% }}
+% \makeatother
 
-\DeclareCiteCommand{\fullcite}
-  {\usebibmacro{prenote}}
-  {\clearfield{url}%
-   \clearfield{pagetotal}%
-   \clearfield{edition}%
-   \usedriver
-     {\DeclareNameAlias{sortname}{default}}
-     {\thefield{entrytype}}}
-  {\multicitedelim}
-  {\usebibmacro{postnote}}
+% \DeclareCiteCommand{\fullcite}
+%   {\usebibmacro{prenote}}
+%   {\clearfield{url}%
+%    \clearfield{pagetotal}%
+%    \clearfield{edition}%
+%    \usedriver
+%      {\DeclareNameAlias{sortname}{default}}
+%      {\thefield{entrytype}}}
+%   {\multicitedelim}
+%   {\usebibmacro{postnote}}
 
 
 %	flush T I G H T  L I S T S
