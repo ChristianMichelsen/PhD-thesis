@@ -579,7 +579,7 @@
 % 	{\normalfont\thecontentslabel\enspace\itshape}
 % 	{\itshape}
 % 	{\quad\quad\contentspage}[\vskip 0pt]
-
+\renewcommand{\contentsname}{Table of Contents}
 % TOCLOFT (stolen from classicthesis)
 \renewcommand{\cftfigpresnum}{\scshape\MakeTextLowercase}%
 \renewcommand{\cftfigfont}{\normalfont}%
@@ -625,8 +625,9 @@
 %	toc offset
 \let\oldtoc\tableofcontents
 \renewcommand{\tableofcontents}{%
-	\begin{quote}\setstretch{1.0}
-	\oldtoc
+	\begin{quote}
+		\setstretch{1.1}
+		\oldtoc
 	\end{quote}
 }
 %	toc depth
