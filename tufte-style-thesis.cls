@@ -424,16 +424,9 @@
 	\footnotesize\raggedleft
 	\hfill
 	\vfill
-	\noindent This document was typeset using \LaTeX{} and the \texttt{tufte-style-thesis} class.
+	\noindent This document was typeset using \LaTeX{} and modified version of the \texttt{tufte-style-thesis} class.
 
 	The style is heavily inspired by the works of Edward R. Tufte and Robert Bringhurst.
-
-	This is available on here:
-
-	\vskip 8pt
-
-	\centering \url{https://github.com/sylvain-kern/tufte-style-thesis/}.\\
-	\raggedleft\noindent Feel free to contribute!
 }
 
 %	F I G U R E S  A N D  S T U F F
