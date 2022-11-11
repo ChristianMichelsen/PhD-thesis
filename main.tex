@@ -7,6 +7,7 @@
 %	package inclusions for this specific documentation file. the .cls does not neet them.
 \usepackage{lipsum}		% the chad package
 \usepackage{pdfpages}
+\usepackage[super]{nth} % for the superscripted "th"
 
 % Update to your bibliography file
 \addbibresource{bibliography.bib}
@@ -25,9 +26,10 @@
 \maketitle
 
 \tableofcontents
+
 \frontmatter
+\part*{Front}
 \pagenumbering{roman}
-% \part{}
 \include{frontmatter/preface.tex}
 \include{frontmatter/acknowledgements.tex}
 \include{frontmatter/abstract.tex}
@@ -40,6 +42,7 @@
 
 % \part{}
 \mainmatter
+\part*{Main}
 \pagenumbering{arabic}
 \include{mainmatter/introduction.tex}
 \include{backmatter/bibliography.tex}
@@ -49,10 +52,12 @@
 % \include{mainmatter/paper-covid.tex}
 % \include{mainmatter/paper-diffusion.tex}
 
-% \part{}
-\backmatter
 
-% \include{mainmatter/appendix.tex}
+\part*{Appendix}
+\appendix
+\include{mainmatter/appendix.tex}
+
+\backmatter
 % \include{backmatter/index.tex}
 
 \end{document}
