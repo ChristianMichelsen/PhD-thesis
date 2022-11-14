@@ -11,11 +11,17 @@
 \usepackage{xspace}     % For the \metaDMG macro
 \usepackage{siunitx}	% for the \SI macro
 
+% For expectation values
+\newcommand{\EX}[1]{\mathbb{E}\left[{#1}\right]}
+\newcommand{\VarX}[1]{\mathbb{V}\left[{#1}\right]}
 
 \newcommand{\metaDMG}{\texttt{metaDMG}\xspace}
 
 \renewcommand{\chapterautorefname}{Chapter}
 \renewcommand{\sectionautorefname}{Section}
+
+\counterwithout{equation}{chapter} % remove the chapter number
+% \counterwithin{equation}{chapter}  % add the chapter number
 
 \counterwithout{figure}{section}
 
@@ -35,6 +41,7 @@
 \person{Cosupervisor}{Thorfinn S. Korneliussen}{Globe Institute}
 
 \shoutouts{Til kvinderne i mit liv}
+
 
 
 \begin{document}

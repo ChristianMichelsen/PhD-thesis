@@ -20,14 +20,36 @@ The field of ancient DNA (aDNA) was drastically changed with the invention of th
 Leaving the homocentric world view, aDNA also allows for the study of archaic animals. In recent years, the boundary of how old DNA can be sequenced has been severely pushed; in 2013 with the early Middle Pleistocene \qtyrange[range-phrase = --,range-units = single]{560}{780}{\kilo\year\BP} horse \autocite{orlandoRecalibratingEquusEvolution2013} and in 2021 with the million-year-old mammoths \autocite{vandervalkMillionyearoldDNASheds2021}. High-throughput sequencing not only allows for the sequencing of single genomes -- like single humans, animals, or plants -- but also for sequencing of entire communities of organisms, so-called metagenomics. By analysing the DNA in environmental samples, environmental DNA, one can survey the rich plant and animal assemblages of a given area and at a specific time in the past. A new paper published in Nature shows that it is now possible to perform metagenomic sequencing on environmental DNA that is 2 million years old, see \autoref{appendix:kapk}. This is a direct application of the statistical method developed in Paper I, see \autoref{chapter:metadmg}, showing that \metaDMG, the method, can help to push the boundary of what is possible with ancient DNA.
 
 Ancient DNA is difficult to work with since it is often highly degraded. In particular, the two prominent issues with aDNA is fragmentation and deamination \autocite{dabneyAncientDNADamage2013a,peyregnePresentDayDNAContamination2020,renaudAuthenticationAssessmentContamination2019}. Fragmentation refers to the fact that the DNA is broken into very short fragments, often with a fragment size of less than \SI{50}{\basepairs}. This is a problem since XXX.
-Deamination is a process in which cytosine (C) in the single-stranded overhangs in the end of the DNA molecules is often hydrolized to uracil (U) which is then read as thymine (T) by the DNA polymerase. This particular type of postmortem damage is known as cytosine deamination, or C-to-T damage, and is a one of the main reasons behind nucleotide misincorporations in ancient DNA \autocite{briggsPatternsDamageGenomic2007}. \autoref{fig:dna-damage-overview} illustrates both fragmentation and deamination of ancient DNA.
+Deamination is a process in which cytosine (C) in the single-stranded overhangs in the end of the DNA molecules is often hydrolized to uracil (U) which is then read as thymine (T) by the DNA polymerase. This particular type of postmortem damage is known as cytosine deamination, or C-to-T transitions, and is a one of the main reasons behind nucleotide misincorporations in ancient DNA \autocite{briggsPatternsDamageGenomic2007}. \autoref{fig:dna-damage-overview} illustrates both fragmentation and deamination of ancient DNA.
 
 \begin{figure}[htbp]
     \sidecaption{
         Illustration of DNA damage. Ancient DNA is often highly fragmented with short reads compared to modern, present-day DNA, and can contain uracils (U). These uracils will then be misread as thymines (T) while sequencing leading to C-T nucleotide misincorporations. This is primaryly happening at the end of the reads. Modified from \autocite{peyregnePresentDayDNAContamination2020}.
         \label{fig:dna-damage-overview}}
+    \centering
     \includegraphics[trim={0mm 90mm 0mm 90mm}, clip, width=\textwidth]{figures/illustrator/dna-deamination.pdf}
 \end{figure}
+
+Currently, a handfull of different methods for quantifying ancient DNA damage exists. In particular, the mapDamage 2.0 software has been the gold standard for how to measure ancient DNA damage in the field \autocite{jonssonMapDamage2FastApproximate2013}, however, it uses slow algorithms leading to unfeasible runtimes for large datasets. Newer, faster methods are being developed all of the time, such as PyDamage \autocite{borryPyDamageAutomatedAncient2021} which tackle some of mapDamage's limitations, although even faster methods suited at metagenomic analysis for large-scale datasets are still lacking.
+
+In Paper I, see \autoref{chapter:metadmg}, we introduce the \metaDMG  software which utilizes the C-to-T deamination pattern\sidenote{for the forward strand and the G-to-A deamination pattern for the reverse strand} to identify ancient DNA damage. One of the key features of this method is the beta-binomial model which allows the uncertainty to fitted independently of the mean leading to improved accuracy of the damage estimation. Since the data is based on misincorporation counts, in particular the number of C-to-T transitions, $k$, out of $N$ total C's, the classical likelihood  to use for this type of data is a binomial distribution. The mean and variance of the binomial distribution is given by:
+\begin{equation}
+    \begin{split}
+        \EX{k}  &= N \mu \\
+        \VarX{k} &= N\mu(1-\mu) \frac{\phi+N}{\phi+1}.
+        \label{eq:P_BetaBinom_expectation_variance}
+    \end{split}
+\end{equation}
+
+
+\begin{figure}[htbp]
+    \sidecaption{
+        Illustration of the damage model. The figure shows data points as circles and the damage, $f(x)$, as a solid line. The amplitude of the damage is $A$, the offset is $c$, and the relative decrease in damage pr. position is given by $q$. The damage uncertainty for a binomial model is shown in dark grey and the uncertainty for a beta-binomial model in light grey.
+        \label{fig:damage-model-sketch}}
+    \centering
+    \includegraphics[width=0.6\textwidth]{figures/damage_sketch.pdf}
+\end{figure}
+
 
 
 
