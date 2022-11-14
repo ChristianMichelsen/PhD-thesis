@@ -395,7 +395,12 @@
 	\hfill
 	\vfill
 	\makeatletter
-	\noindent\begin{flushleft}\@author,\quad \textit{\@title,} \@subtitle, \@date.
+	\noindent
+	\begin{flushleft}
+		\@author, \\
+		\textit{\@title: \\
+		\expandafter\MakeLowercase\expandafter{\@subtitle} ,} \\
+		\@date.
     \end{flushleft}
 	\makeatother
 

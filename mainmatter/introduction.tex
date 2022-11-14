@@ -1,34 +1,50 @@
 
 \chapter{Introduction}
+The primary content of my thesis is the four papers that are included in the thesis. This chapter is meant as a brief introduction to the background needed to understand the basics of the methods used throughout the papers. As such, this chapter is not meant to be a comprehensive guide to statistics and bioinformatics used in the papers.
 
-This class is my personal mix of different book design influences: mainly the works of Edward R. Tufte,
-% \sidecite{TufteTvdq, TufteBE, TufteEI, TufteVE} known for the big margin and the plentiness of
-\parencite{heltbergSpatialHeterogeneityAffects2022a, korneliussenANGSDAnalysisNext2014} known for the big margin and the plentiness of
-sidenotes and sidecaptions. The margins are however not as prominent as in Tufte's works, the main text takes a bit more space,
-more like in Robert Bringhurt's typographer's bible \autocite{heltbergSpatialHeterogeneityAffects2022a}.
-% \sidecite{BringhurstEoTS}%\index{Bringhurst, Robert}.
+The original research motivation supporting the funding of this Ph.D. was very multi-disciplinary. The papers included in my thesis are also clearly influenced by this mentality. In \autoref{section:ancientDNA}, I will shortly introduce the field of ancient genomics followed by \autoref{section:Bayesian} where the statistical methods used to identify ancient DNA will be explained. Paper I, see \autoref{chapter:metadmg}, utilize modern Bayesian methods to classify which species are ancient and which ones are not. This section will also introduce some of the methods used in Paper IV, see \autoref{chapter:diffusion}, in particular the use of Bayesian model comparisons of different diffusion models. The topic of diffusion will be briefly introduced in \autoref{section:diffusion}.
 
-So it is a bit of a mix of Tufte and Bringhurst,
-with some of my own choices for other design features, as we will see through this chapter.
-
-\section{Bayesian Statistics and Ancient DNA}
-
-While \texttt{tufte-style-thesis} is a class for typesetting theses,
-the general layout is pretty much the same as in a regular book.
-A book is traditionally divided into three major sections:
-the front matter, the main matter and the back matter.
+Bayesian methods are great when possible, however, they also rely on some statistical model being defined. In the case of Paper I, the model is a Beta-Binomial distribution combined with an exponential-decay damage model, in Paper IV the model is a mixture-model of different Rayleigh-distributions. Sometimes, however, the model is not known and the data generating process has to be inferred by other means. This is the case in Paper II, see \autoref{chapter:hospital}, where we utilize modern machine learning methods to extract this information.
 
 
-\section{Machine Learning and Anesthesiology}
+\section{Ancient DNA}
+\label{section:ancientDNA}
+
+Previously, the only way to study ancient animals, plants, and other species was by studying their fossils. This changed in the middle of the 1980's when the first DNA was recovered from almost 5000 years old ancient mummies, showing that it was indeed possible to extract and sequence ancient DNA \autocite{paaboMolecularCloningAncient1985,paaboPreservationDNAAncient1985}. This discovery, along with a dozen other pushing the boundary for what is scientifically possible with ancient DNA, led to Svante Pääbo being awarded with the Nobel Prize in Physiology or Medicine in 2022 for ``his discoveries concerning the genomes of extinct hominins and human evolution'' \autocite{thenobelassemblyatkarolinskainstitutetNobelPrizePhysiology2022}.
+
+The field of ancient DNA (aDNA) was drastically changed with the invention of the Polymerase Chain Reaction, PCR, method \autocite{mullisSpecificEnzymaticAmplification1986} along with the Next Generation Sequencing technology which revolutionized the speed and throughput of genomic sequencing while decimating the cost \autocite{slatkoOverviewNextGeneration2018}. This technological advance has lead to better understanding of human migration and the genealogical tree of modern humans including the previously unknown human (sub)species; the Denisova hominin \autocite{krauseCompleteMitochondrialDNA2010}.
+
+Leaving the homocentric world view, aDNA also allows for the study of archaic animals. In recent years, the boundary of how old DNA can be sequenced has been severely pushed; in 2013 with the early Middle Pleistocene \qtyrange[range-phrase = --,range-units = single]{560}{780}{\kilo\year\BP} horse \autocite{orlandoRecalibratingEquusEvolution2013} and in 2021 with the million-year-old mammoths \autocite{vandervalkMillionyearoldDNASheds2021}. High-throughput sequencing not only allows for the sequencing of single genomes -- like single humans, animals, or plants -- but also for sequencing of entire communities of organisms, so-called metagenomics. By analysing the DNA in environmental samples, environmental DNA, one can survey the biodiversity of a given area and at a specific time in the past. A new Nature study 
+
+
+
+\begin{figure}[htbp]
+    \sidecaption{
+        Illustration of DNA damage. Ancient DNA is often highly fragmented with short reads compared to modern, present-day DNA, and can contain uracils (U). These uracils will then be misread as thymines (T) while sequencing leading to C-T nucleotide misincorporations. This is primaryly happening at the end of the reads. Modified from \autocite{peyregnePresentDayDNAContamination2020}.}
+    \label{fig:figure-text}
+    \includegraphics[trim={0mm 90mm 0mm 90mm}, clip, width=\textwidth]{figures/illustrator/dna-deamination.pdf}
+\end{figure}
+
+
+
+
+\section{Bayesian Statistics}
+\label{section:Bayesian}
+
+\section{Diffusion Models}
+\label{section:diffusion}
+
+
+\section{Machine Learning}
+\label{section:machine-learning}
+
 asdasdasd
 
 
 \section{Agent Based Models and COVID-19}
+\label{section:agent-based-models}
 
 asdasdasdads
 
-
-
-\section{Bayesian Model Comparison and Diffusion Models}
 
 asdasdas

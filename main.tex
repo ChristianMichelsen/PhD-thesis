@@ -9,7 +9,15 @@
 \usepackage{pdfpages}
 \usepackage[super]{nth} % for the superscripted "th"
 \usepackage{xspace}     % For the \metaDMG macro
+\usepackage{siunitx}	% for the \SI macro
+
+
 \newcommand{\metaDMG}{\texttt{metaDMG}\xspace}
+\renewcommand{\chapterautorefname}{Chapter}
+\renewcommand{\sectionautorefname}{Section}
+
+\DeclareSIUnit\year{yr}
+\DeclareSIUnit\BP{BP}
 
 
 % Update to your bibliography file
@@ -47,10 +55,10 @@
 \include{mainmatter/introduction.tex}
 \include{backmatter/bibliography.tex}
 
-% \include{mainmatter/paper-dna.tex}
-% \include{mainmatter/paper-hospital.tex}
-% \include{mainmatter/paper-covid.tex}
-% \include{mainmatter/paper-diffusion.tex}
+\include{mainmatter/paper-dna.tex}
+\include{mainmatter/paper-hospital.tex}
+\include{mainmatter/paper-covid.tex}
+\include{mainmatter/paper-diffusion.tex}
 
 
 \part*{Appendix}

@@ -121,10 +121,10 @@ The 1.5-column design fixes this by putting all captions in the margins, as well
 
 \textfig[1]{figures/bretagne.png}{1919 map of the Finistère in French Brittany. This figure is in the main text column, with a caption in the margin aligned with the top of the image. For images narrower than the text width, they will be outer-aligned so that they remain just next their caption.}{fig:figure-text}
 
-% \begin{figure}[htbp]
-% 	\sidecaption{1919 map of the Finistère in French Brittany. This figure is in the main text column, with a caption in the margin aligned with the top of the image. For images with width less than the text width, they will be outer-aligned so that they are close to the caption.}\label{fig:figure-text}
-% 	\includegraphics[width = \linewidth, outer]{figures/bretagne.png}
-% \end{figure}
+\begin{figure}[htbp]
+	\sidecaption{1919 map of the Finistère in French Brittany. This figure is in the main text column, with a caption in the margin aligned with the top of the image. For images with width less than the text width, they will be outer-aligned so that they are close to the caption.}\label{fig:figure-text}
+	\includegraphics[width = \linewidth, outer]{figures/bretagne.png}
+\end{figure}
 
 
 To put a graphics in the text like in the figure \ref{fig:figure-text}, use\footnote{The \texttt{\textbackslash label} \textit{has} to be inside the \texttt{\textbackslash sidecaption} command, otherwise references with \texttt{\textbackslash ref} won't work.}
