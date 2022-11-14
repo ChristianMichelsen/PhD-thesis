@@ -316,7 +316,7 @@
 
 		% \setcounter{page}{1}
 		\hfill
-		\begin{minipage}{0.7\linewidth}
+		\begin{minipage}{0.55\linewidth}
 		\raggedleft
 
 		{\large\scshape
