@@ -26,3 +26,5 @@
 *.idx
 *.ind
 figures/illustrator/*
+.DS_Store
+.vscode

@@ -207,7 +207,7 @@
 \renewcommand{\sectionmark}[1]{ \markright{#1}{} }
 \pagestyle{fancy}
 \fancyhf{}
-\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\headrulewidth}{0.1pt}
 \fancyhead[LO]{
 	\footnotesize\textls{\MakeUppercase{\sffamily\rightmark}} \hfill \normalfont\normalsize\thepage
 }
@@ -624,7 +624,7 @@
 \let\oldtoc\tableofcontents
 \renewcommand{\tableofcontents}{%
 	\begin{quote}
-		\setstretch{1.1}
+		\setstretch{0.9}
 		\oldtoc
 	\end{quote}
 }
