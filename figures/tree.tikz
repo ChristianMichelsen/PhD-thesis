@@ -1,0 +1,22 @@
+\begin{tikzpicture}[sibling distance=9em, level distance = 1cm,
+    every node/.style = {shape=rectangle, draw, align=center,}]]
+  \node {Root}
+  child  {node {$\dots$}
+      child [grow=south] {node {Genus X}
+          child {node {Species A}
+              child {node {Subspecies I}
+                  child {node {Align. 1}}
+                  child {node {Align. 2}}
+                }
+              child {node {Subspecies II}
+                  child {node [right=0cm] {Align. 3}}
+                }
+            }
+          child {node {Species B}
+              child  {node [right=1.5cm,below=0.72cm] {Align. 4}}
+            }
+        }
+    }
+  child {node {$\dots$}
+    };
+\end{tikzpicture}

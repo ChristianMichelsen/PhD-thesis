@@ -34,23 +34,73 @@ For an illustration of both fragmentation and deamination of ancient DNA, see  \
 
 Currently, a handfull of different methods for quantifying ancient DNA damage exists. In particular, the mapDamage 2.0 software has been the gold standard for how to measure ancient DNA damage in the field \autocite{jonssonMapDamage2FastApproximate2013}, however, it uses slow algorithms leading to unfeasible runtimes for large datasets. Newer, faster methods are being developed all of the time, such as PyDamage \autocite{borryPyDamageAutomatedAncient2021} which tackle some of mapDamage's limitations, although even faster methods suited at metagenomic analysis for large-scale datasets are still lacking.
 
-In Paper I, see \autoref{chapter:metadmg}, we introduce the \metaDMG  software which utilizes the C-to-T deamination pattern\sidenote{for the forward strand and the G-to-A deamination pattern for the reverse strand} to identify ancient DNA damage. One of the key features of this method is the beta-binomial model which allows the uncertainty to fitted independently of the mean leading to improved accuracy of the damage estimation. Since the data is based on misincorporation counts, in particular the number of C-to-T transitions, $k$, out of $N$ total C's, the classical likelihood  to use for this type of data is a binomial distribution. The mean and variance of the binomial distribution is given by:
+In Paper I, see \autoref{chapter:metadmg}, we introduce the \metaDMG  software which utilizes the C-to-T deamination pattern\sidenote{for the forward strand and the G-to-A deamination pattern for the reverse strand} to identify ancient DNA damage. One of the key features of this method is the beta-binomial model which allows the uncertainty to fitted independently of the mean leading to improved accuracy of the damage estimation. Since the data is based on misincorporation counts, in particular the number of C-to-T transitions, $k$, out of $N$ total C's, the classical likelihood to use for this type of data is a binomial distribution. The mean and variance of the binomial distribution is given by:
+\begin{equation}
+    \begin{split}
+        \EX{k}  &= N p \\
+        \VarX{k} &= Np(1-p),
+        \label{eq:Binomial_expectation_variance}
+    \end{split}
+\end{equation}
+where $p$ is the probability of success (a C-to-T substitution). One of the issues, however, is that the variance of the binomial distribution is proportional to the mean. The binomial distribution is thus not flexible enough to accommodate large amounts of variance in the data, so-called overdispersion \autocite{mcelreathStatisticalRethinkingBayesian2020}. One way to accommodate overdispersion is to instead use a beta-binomial model. The beta-binomial model is a generalization of the binomial distribution where the variance is allowed to be flexible. Technically, the beta-binomial model assumes that $p$ is a random variable which follows a beta distribution $p \sim \mathrm{Beta}(\mu, \phi)$ where the beta distribution is parameterized\sidenote{This can be reparameterization in term of the classical $\alpha, \beta$ parameterization by: $\mu = \alpha / (\alpha + \beta)$ and $\phi = \alpha + \beta$.} in terms of its mean, $\mu$, and dispersion parameter, $\phi$, \autocite{cepeda-cuervoDoubleGeneralizedBetaBinomial2017}. The mean and variance of this beta-binomial model is then given by:
 \begin{equation}
     \begin{split}
         \EX{k}  &= N \mu \\
         \VarX{k} &= N\mu(1-\mu) \frac{\phi+N}{\phi+1}.
-        \label{eq:P_BetaBinom_expectation_variance}
+        \label{eq:BetaBinomial_expectation_variance}
     \end{split}
 \end{equation}
 
+Comparing \autoref{eq:Binomial_expectation_variance} and \autoref{eq:BetaBinomial_expectation_variance}, we see that the variance of the beta-binomial model is no longer (strictly) proportional to the mean, but instead is a function of the dispersion parameter, $\phi$, allowing for higher variance than the binomial-only model. When $\phi = 0$, the variance of the beta-binomial model is $N$ times larger, and when $\phi \rightarrow \infty$ the variance reduces to the variance of the binomial model, showing that the beta-binomial model is a generalization of the binomial model.
+
+\autoref{eq:BetaBinomial_expectation_variance} shows how we model the C-to-T damage at a specific base position in the read. We model the position-dependent damage frequency, $f(x) = k(x) \ N(x)$, see \autoref{fig:dna-damage-overview}, as a function of the distance from the end of the read, $x$, with an exponential decay:
+\begin{align}
+    f(x; A, q, c) = A(1-q)^{x-1} + c.
+    \label{eq:damage_function}
+\end{align}
+Here $A$ is the scale factor, or amplitude, $q$ is the decay rate, and $c$ is a constant offset, the baseline damage. Since $x$ is discrete, this is similar to a (modified) geometric sequence starting from $x=1$. The combination of \autoref{eq:BetaBinomial_expectation_variance} and \autoref{eq:damage_function} is illustrated in \autoref{fig:damage-model-sketch}, which shows the position-dependent, decreasing damage frequency. The figure also shows the increase in uncertainty in the beta-binomial model compared to the binomial-only model.
+\begin{figure}[htbp]
+    \sidecaption{
+        Illustration of the damage model. The figure shows data points as circles and the damage frequency, $f(x)$, as a solid line. The amplitude of the damage is $A$, the offset is $c$, and the relative decrease in damage pr. position is given by $q$. The damage uncertainty for a binomial model is shown in dark grey and the uncertainty for a beta-binomial model in light grey.
+        \label{fig:damage-model-sketch}}
+    \centering
+    \includegraphics[width=0.6\textwidth]{figures/damage_sketch_new.pdf}
+\end{figure}
+
+The damage framework described above is based on the nucleotide misincorporations, i.e. the C-to-T transitions. The background for this data can be from either sequence files (fasta or fastq files) mapped to a single genome or from metagenomic data consisting of multiple mapped reads. As such, the damage framework is a general tool for estimating damage.
+In the metagenomic case where single DNA reads are mapped to multiple species, \metaDMG performs a simple lowest common ancestor based on the ngsLCA algorithm \autocite{wangNgsLCAToolkitFasta}. This means that for each read that map to multiple reference, i.e. has multiple alignments, the taxonomic tree is traversed for each alignment until a common ancestor is found. This is the so-called lowest common ancestor (LCA). \autoref{fig:tree-LCA} illustrates the LCA for a read that maps to different (sub)species. In this example, the LCA of alignment 1 and 2 is the Subspecies I while the LCA for all four alignments is the Genus X. \metaDMG works by default with the NCBI taxanomic database but can also be used with custom databases.
 
 \begin{figure}[htbp]
     \sidecaption{
-        Illustration of the damage model. The figure shows data points as circles and the damage, $f(x)$, as a solid line. The amplitude of the damage is $A$, the offset is $c$, and the relative decrease in damage pr. position is given by $q$. The damage uncertainty for a binomial model is shown in dark grey and the uncertainty for a beta-binomial model in light grey.
-        \label{fig:damage-model-sketch}}
+        Illustration of the lowest common ancestor (LCA) for taxonomic trees. Here the LCA of alignment 1 and 2 is Subspecies I, while the LCA of all four reads is Genus X. The dots ($\dots$) refers to other taxonomic levels, e.g. family and order.
+        \label{fig:tree-LCA}}
     \centering
-    \includegraphics[width=0.6\textwidth]{figures/damage_sketch.pdf}
+    \includegraphics[trim={3cm 19.5cm 8.5cm 2.3cm}, clip,width=0.8\textwidth]{figures/tree.pdf}
 \end{figure}
+
+Given the nucleotide misincorporations, either coming from a single-reference alignment file or after LCA in the metagenomic case, we fit eq. \eqref{eq:BetaBinomial_expectation_variance} and \eqref{eq:damage_function} with a Bayesian model. This is done to ensure the optimal inference of the parameters, $A$, $q$, and $c$, and to account for the uncertainty in the data. Bayesian inference also allows for the inclusion of domain knowledge in the form of the prior distribution by Bayes theorem. Bayes theorem is based on the law of conditional probability \autocite{barlowStatisticsGuideUse1993} stating that the probability of two events, $A$ and $B$, both happening, $P(A \cap B)$, is given by the probability of $B$, $P(B)$ times the probability of $A$ given $B$, $P(A|B)$:
+\begin{align}
+    P(A \cap B) = P(B)P(A|B).
+    \label{eq:bayes_theorem_1}
+\end{align}
+Similarly, $P(A \cap B)$ can also be expressed in terms of the probability of $A$:
+\begin{align}
+    P(A \cap B) = P(A)P(B|A).
+    \label{eq:bayes_theorem_2}
+\end{align}
+Combining \autoref{eq:bayes_theorem_1} and \autoref{eq:bayes_theorem_2} and rearranging terms gives the Bayes theorem:
+\begin{align}
+    P(\theta|x) = \frac{P(\theta)P(x|\theta)}{P(x)},
+    \label{eq:bayes_theorem}
+\end{align}
+with a change of variables where $x$ now refers to the observed data and $\theta$ the parameter(s) of the model. The first term in the numerator, $P(\theta)$, is the prior distribution and describes the probability distribution assigned to $\theta$ before observing any data. The second term is the likelihood function, $P(x|\theta)$, which is the probability of observing the data, $x$, given the parameter(s), $\theta$. Together these two terms combine to a compromise between data and prior information.
+
+The numerator, $P(x)$, also known as the evidence, can be treated as a data-related normalization factor. In the case of continuous $\theta$, this can calculated as the marginalization of the likelihood function over $\theta$:
+\begin{align}
+    P(x) = \int_\theta P(x|\theta)P(\theta) \dx \theta.
+    \label{eq:evidence}
+\end{align}
+This equation, however, is often intractable to compute in the higher-dimensional case. Luckily, it can be shown that Markov Chain Monte Carlo (MCMC) sampling can approximate the posterior distribution, $P(\theta|x)$, and asymptotically converge to the correct distribution \autocite{gelmanBayesianDataAnalysis2015a}.
 
 
 
