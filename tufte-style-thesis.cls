@@ -399,7 +399,7 @@
 	\begin{flushleft}
 		\@author, \\
 		\textit{\@title: \\
-		\expandafter\MakeLowercase\expandafter{\@subtitle} ,} \\
+		\expandafter\MakeLowercase\expandafter{\@subtitle},} \\
 		\@date.
     \end{flushleft}
 	\makeatother
