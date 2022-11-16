@@ -1,12 +1,3 @@
-@book{10.5555/2380985,
-  title = {Machine Learning: {{A}} Probabilistic Perspective},
-  author = {Murphy, Kevin P.},
-  date = {2012},
-  publisher = {{The MIT Press}},
-  abstract = {Today's Web-enabled deluge of electronic data calls for automated methods of data analysis. Machine learning provides these, developing methods that can automatically detect patterns in data and then use the uncovered patterns to predict future data. This textbook offers a comprehensive and self-contained introduction to the field of machine learning, based on a unified, probabilistic approach. The coverage combines breadth and depth, offering necessary background material on such topics as probability, optimization, and linear algebra as well as discussion of recent developments in the field, including conditional random fields, L1 regularization, and deep learning. The book is written in an informal, accessible style, complete with pseudo-code for the most important algorithms. All topics are copiously illustrated with color images and worked examples drawn from such application domains as biology, text processing, computer vision, and robotics. Rather than providing a cookbook of different heuristic methods, the book stresses a principled model-based approach, often using the language of graphical models to specify models in a concise and intuitive way. Almost all the models described have been implemented in a MATLAB software package–PMTK (probabilistic modeling toolkit)–that is freely available online. The book is suitable for upper-level undergraduates with an introductory-level college math background and beginning graduate students.},
-  isbn = {0-262-01802-0}
-}
-
 @book{abu-mostafaLearningData2012a,
   title = {Learning {{From Data}}},
   author = {Abu-Mostafa, Yaser S. and Magdon-Ismail, Malik and Lin, Hsuan-Tien},
@@ -16,6 +7,25 @@
   isbn = {978-1-60049-006-4},
   langid = {english},
   pagetotal = {213}
+}
+
+@inproceedings{akibaOptunaNextgenerationHyperparameter2019,
+  title = {Optuna: {{A Next-generation Hyperparameter Optimization Framework}}},
+  shorttitle = {Optuna},
+  booktitle = {Proceedings of the 25th {{ACM SIGKDD International Conference}} on {{Knowledge Discovery}} \& {{Data Mining}}},
+  author = {Akiba, Takuya and Sano, Shotaro and Yanase, Toshihiko and Ohta, Takeru and Koyama, Masanori},
+  date = {2019-07-25},
+  series = {{{KDD}} '19},
+  pages = {2623--2631},
+  publisher = {{Association for Computing Machinery}},
+  location = {{New York, NY, USA}},
+  doi = {10.1145/3292500.3330701},
+  url = {https://doi.org/10.1145/3292500.3330701},
+  urldate = {2022-11-16},
+  abstract = {The purpose of this study is to introduce new design-criteria for next-generation hyperparameter optimization software. The criteria we propose include (1) define-by-run API that allows users to construct the parameter search space dynamically, (2) efficient implementation of both searching and pruning strategies, and (3) easy-to-setup, versatile architecture that can be deployed for various purposes, ranging from scalable distributed computing to light-weight experiment conducted via interactive interface. In order to prove our point, we will introduce Optuna, an optimization software which is a culmination of our effort in the development of a next generation optimization software. As an optimization software designed with define-by-run principle, Optuna is particularly the first of its kind. We will present the design-techniques that became necessary in the development of the software that meets the above criteria, and demonstrate the power of our new design through experimental results and real world applications. Our software is available under the MIT license (https://github.com/pfnet/optuna/).},
+  isbn = {978-1-4503-6201-6},
+  keywords = {Bayesian optimization,black-box optimization,hyperparameter optimization,machine learning system},
+  file = {/Users/michelsen/Zotero/storage/94LWRTM9/akiba2019.pdf.pdf;/Users/michelsen/Zotero/storage/Q5BCLKT4/Akiba et al. - 2019 - Optuna A Next-generation Hyperparameter Optimizat.pdf}
 }
 
 @article{al-asadiInferenceVisualizationDNA,
@@ -67,6 +77,30 @@
   pagetotal = {222}
 }
 
+@inproceedings{bergstraAlgorithmsHyperParameterOptimization2011,
+  title = {Algorithms for {{Hyper-Parameter Optimization}}},
+  booktitle = {Advances in {{Neural Information Processing Systems}}},
+  author = {Bergstra, James and Bardenet, Rémi and Bengio, Yoshua and Kégl, Balázs},
+  date = {2011},
+  volume = {24},
+  publisher = {{Curran Associates, Inc.}},
+  url = {https://papers.nips.cc/paper/2011/hash/86e8f7ab32cfd12577bc2619bc635690-Abstract.html},
+  urldate = {2022-11-16},
+  abstract = {Several recent advances to the state of the art in image classification benchmarks have come from better configurations of existing techniques rather than novel approaches to feature learning. Traditionally, hyper-parameter optimization has been the job of humans because they can be very efficient in regimes where only a few trials are possible. Presently, computer clusters and GPU processors make it possible to run more trials and we show that algorithmic approaches can find better results. We present hyper-parameter optimization results on tasks of training neural networks and deep belief networks (DBNs). We optimize hyper-parameters using random search and two new greedy sequential methods based on the expected improvement criterion. Random search has been shown to be sufficiently efficient for learning neural networks for several datasets, but we show it is unreliable for training DBNs. The sequential algorithms are applied to the most difficult DBN learning problems from [Larochelle et al., 2007] and find significantly better results than the best previously reported. This work contributes novel techniques for making response surface models P (y|x) in which many elements of hyper-parameter assignment (x) are known to be irrelevant given particular values of other elements.},
+  file = {/Users/michelsen/Zotero/storage/RAC8JZWL/Bergstra et al. - 2011 - Algorithms for Hyper-Parameter Optimization.pdf}
+}
+
+@article{bergstraRandomSearchHyperparameter2012a,
+  title = {Random Search for Hyper-Parameter Optimization},
+  author = {Bergstra, James and Bengio, Yoshua},
+  date = {2012},
+  journaltitle = {Journal of Machine Learning Research},
+  volume = {13},
+  number = {10},
+  pages = {281--305},
+  url = {http://jmlr.org/papers/v13/bergstra12a.html}
+}
+
 @unpublished{betancourtConceptualIntroductionHamiltonian2018,
   title = {A {{Conceptual Introduction}} to {{Hamiltonian Monte Carlo}}},
   author = {Betancourt, Michael},
@@ -80,7 +114,7 @@
   file = {/Users/michelsen/Zotero/storage/7N3P7B7B/Betancourt - 2018 - A Conceptual Introduction to Hamiltonian Monte Car.pdf;/Users/michelsen/Zotero/storage/FUWHE69E/1701.html}
 }
 
-@article{bezanson2017julia,
+@article{bezansonJuliaFreshApproach2017,
   title = {Julia: {{A}} Fresh Approach to Numerical Computing},
   author = {Bezanson, Jeff and Edelman, Alan and Karpinski, Stefan and Shah, Viral B},
   date = {2017},
@@ -93,7 +127,7 @@
   keywords = {julia}
 }
 
-@article{bingham2019pyro,
+@article{binghamPyroDeepUniversal2019,
   title = {Pyro: {{Deep}} Universal Probabilistic Programming},
   author = {Bingham, Eli and Chen, Jonathan P. and Jankowiak, Martin and Obermeyer, Fritz and Pradhan, Neeraj and Karaletsos, Theofanis and Singh, Rohit and Szerlip, Paul A. and Horsfall, Paul and Goodman, Noah D.},
   date = {2019},
@@ -148,7 +182,26 @@
   file = {/Users/michelsen/Zotero/storage/8RS8X78U/Briggs et al. - 2007 - Patterns of damage in genomic DNA sequences from a.pdf}
 }
 
-@article{carpenter2017stan,
+@misc{brochuTutorialBayesianOptimization2010a,
+  title = {A {{Tutorial}} on {{Bayesian Optimization}} of {{Expensive Cost Functions}}, with {{Application}} to {{Active User Modeling}} and {{Hierarchical Reinforcement Learning}}},
+  author = {Brochu, Eric and Cora, Vlad M. and de Freitas, Nando},
+  options = {useprefix=true},
+  date = {2010-12-12},
+  number = {arXiv:1012.2599},
+  eprint = {1012.2599},
+  eprinttype = {arxiv},
+  primaryclass = {cs},
+  publisher = {{arXiv}},
+  doi = {10.48550/arXiv.1012.2599},
+  url = {http://arxiv.org/abs/1012.2599},
+  urldate = {2022-11-16},
+  abstract = {We present a tutorial on Bayesian optimization, a method of finding the maximum of expensive cost functions. Bayesian optimization employs the Bayesian technique of setting a prior over the objective function and combining it with evidence to get a posterior function. This permits a utility-based selection of the next observation to make on the objective function, which must take into account both exploration (sampling from areas of high uncertainty) and exploitation (sampling areas likely to offer improvement over the current best observation). We also present two detailed extensions of Bayesian optimization, with experiments---active user modelling with preferences, and hierarchical reinforcement learning---and a discussion of the pros and cons of Bayesian optimization based on our experiences.},
+  archiveprefix = {arXiv},
+  keywords = {Computer Science - Machine Learning,G.1.6,G.3,I.2.6},
+  file = {/Users/michelsen/Zotero/storage/TFYS4CFH/Brochu et al. - 2010 - A Tutorial on Bayesian Optimization of Expensive C.pdf;/Users/michelsen/Zotero/storage/AIQ2PYTE/1012.html}
+}
+
+@article{carpenterStanProbabilisticProgramming2017,
   title = {Stan: {{A}} Probabilistic Programming Language},
   author = {Carpenter, Bob and Gelman, Andrew and Hoffman, Matthew D and Lee, Daniel and Goodrich, Ben and Betancourt, Michael and Brubaker, Marcus and Guo, Jiqiang and Li, Peter and Riddell, Allen},
   date = {2017},
@@ -541,6 +594,13 @@
   file = {/Users/michelsen/Zotero/storage/4J452WUH/Meyer et al. - 2016 - Nuclear DNA sequences from the Middle Pleistocene .pdf;/Users/michelsen/Zotero/storage/8STA35B9/nature17405.html}
 }
 
+@thesis{michelsenPhysicistApproachMachine2020,
+  title = {A Physicist’s Approach to Machine Learning – Understanding the Basic Bricks},
+  author = {Michelsen, Christian},
+  date = {2020},
+  institution = {{University of Copenhagen}}
+}
+
 @article{mullisSpecificEnzymaticAmplification1986,
   title = {Specific Enzymatic Amplification of {{DNA}} in Vitro: The Polymerase Chain Reaction},
   shorttitle = {Specific Enzymatic Amplification of {{DNA}} in Vitro},
@@ -557,6 +617,15 @@
   langid = {english},
   keywords = {Alleles,Base Sequence,Cell Line,Cloning; Molecular,DNA,DNA-Directed DNA Polymerase,Genes,Humans,Templates; Genetic},
   file = {/Users/michelsen/Zotero/storage/6557LKBM/mullis1986.pdf.pdf}
+}
+
+@book{murphyMachineLearningProbabilistic2012,
+  title = {Machine Learning: {{A}} Probabilistic Perspective},
+  author = {Murphy, Kevin P.},
+  date = {2012},
+  publisher = {{The MIT Press}},
+  abstract = {Today's Web-enabled deluge of electronic data calls for automated methods of data analysis. Machine learning provides these, developing methods that can automatically detect patterns in data and then use the uncovered patterns to predict future data. This textbook offers a comprehensive and self-contained introduction to the field of machine learning, based on a unified, probabilistic approach. The coverage combines breadth and depth, offering necessary background material on such topics as probability, optimization, and linear algebra as well as discussion of recent developments in the field, including conditional random fields, L1 regularization, and deep learning. The book is written in an informal, accessible style, complete with pseudo-code for the most important algorithms. All topics are copiously illustrated with color images and worked examples drawn from such application domains as biology, text processing, computer vision, and robotics. Rather than providing a cookbook of different heuristic methods, the book stresses a principled model-based approach, often using the language of graphical models to specify models in a concise and intuitive way. Almost all the models described have been implemented in a MATLAB software package–PMTK (probabilistic modeling toolkit)–that is freely available online. The book is suitable for upper-level undergraduates with an introductory-level college math background and beginning graduate students.},
+  isbn = {0-262-01802-0}
 }
 
 @book{nealMCMCUsingHamiltonian2011,
@@ -849,6 +918,22 @@
   abstract = {Background Identity by descent (IBD) has played a fundamental role in the discovery of genetic loci underlying human diseases. Both pedigree-based and population-based linkage analyses rely on estimating recent IBD, and evidence of ancient IBD can be used to detect population structure in genetic association studies. Various methods for detecting IBD, including those implemented in the soft- ware programs fastIBD and GERMLINE, have been developed in the past several years using population genotype data from microarray platforms. Now, next-generation DNA sequencing data is becoming increasingly available, enabling the comprehensive analysis of genomes, in- cluding identifying rare variants. These sequencing data may provide an opportunity to detect IBD with higher resolution than previously possible, potentially enabling the detection of disease causing loci that were previously undetectable with sparser genetic data. Results Here, we investigate how different levels of variant coverage in sequencing and microarray genotype data influences the resolution at which IBD can be detected. This includes microarray genotype data from the WTCCC study, denser genotype data from the HapMap Project, low coverage sequencing data from the 1000 Genomes Project, and deep coverage complete genome data from our own projects. With high power (78\%), we can detect segments of length 0.4 cM or larger using fastIBD and GERMLINE in sequencing data. This compares to similar power to detect segments of length 1.0 cM or higher with microarray genotype data. We find that GERMLINE has slightly higher power than fastIBD for detecting IBD segments using sequencing data, but also has a much higher false positive rate. Conclusion We further quantify the effect of variant density, conditional on genetic map length, on the power to resolve IBD segments. These investigations into IBD resolution may help guide the design of future next generation sequencing studies that utilize IBD, including family-based association studies, association studies in admixed populations, and homozygosity mapping studies.},
   pmcid = {PMC3403908},
   file = {/Users/michelsen/Zotero/storage/HXAXM6CV/Su et al. - 2012 - Detection of identity by descent using next-genera.pdf}
+}
+
+@article{tashmanOutofsampleTestsForecasting2000a,
+  title = {Out-of-Sample Tests of Forecasting Accuracy: An Analysis and Review},
+  shorttitle = {Out-of-Sample Tests of Forecasting Accuracy},
+  author = {Tashman, Leonard J.},
+  date = {2000},
+  journaltitle = {International Journal of Forecasting},
+  volume = {16},
+  number = {4},
+  pages = {437--450},
+  publisher = {{Elsevier}},
+  issn = {0169-2070},
+  url = {https://econpapers.repec.org/article/eeeintfor/v_3a16_3ay_3a2000_3ai_3a4_3ap_3a437-450.htm},
+  urldate = {2022-11-16},
+  file = {/Users/michelsen/Zotero/storage/QNL4EJQ9/v_3a16_3ay_3a2000_3ai_3a4_3ap_3a437-450.html}
 }
 
 @online{thenobelassemblyatkarolinskainstitutetNobelPrizePhysiology2022,
