@@ -1,3 +1,12 @@
+@book{10.5555/2380985,
+  title = {Machine Learning: {{A}} Probabilistic Perspective},
+  author = {Murphy, Kevin P.},
+  date = {2012},
+  publisher = {{The MIT Press}},
+  abstract = {Today's Web-enabled deluge of electronic data calls for automated methods of data analysis. Machine learning provides these, developing methods that can automatically detect patterns in data and then use the uncovered patterns to predict future data. This textbook offers a comprehensive and self-contained introduction to the field of machine learning, based on a unified, probabilistic approach. The coverage combines breadth and depth, offering necessary background material on such topics as probability, optimization, and linear algebra as well as discussion of recent developments in the field, including conditional random fields, L1 regularization, and deep learning. The book is written in an informal, accessible style, complete with pseudo-code for the most important algorithms. All topics are copiously illustrated with color images and worked examples drawn from such application domains as biology, text processing, computer vision, and robotics. Rather than providing a cookbook of different heuristic methods, the book stresses a principled model-based approach, often using the language of graphical models to specify models in a concise and intuitive way. Almost all the models described have been implemented in a MATLAB software package–PMTK (probabilistic modeling toolkit)–that is freely available online. The book is suitable for upper-level undergraduates with an introductory-level college math background and beginning graduate students.},
+  isbn = {0-262-01802-0}
+}
+
 @article{al-asadiInferenceVisualizationDNA,
   title = {Inference and Visualization of {{DNA}} Damage Patterns Using a Grade of Membership Model},
   author = {Al-Asadi, Hussein and Dey, Kushal K and Novembre, John and Stephens, Matthew},
@@ -47,6 +56,43 @@
   pagetotal = {222}
 }
 
+@unpublished{betancourtConceptualIntroductionHamiltonian2018,
+  title = {A {{Conceptual Introduction}} to {{Hamiltonian Monte Carlo}}},
+  author = {Betancourt, Michael},
+  date = {2018-07-15},
+  eprint = {1701.02434},
+  eprinttype = {arxiv},
+  primaryclass = {stat},
+  abstract = {Hamiltonian Monte Carlo has proven a remarkable empirical success, but only recently have we begun to develop a rigorous understanding of why it performs so well on difficult problems and how it is best applied in practice. Unfortunately, that understanding is confined within the mathematics of differential geometry which has limited its dissemination, especially to the applied communities for which it is particularly important. In this review I provide a comprehensive conceptual account of these theoretical foundations, focusing on developing a principled intuition behind the method and its optimal implementations rather of any exhaustive rigor. Whether a practitioner or a statistician, the dedicated reader will acquire a solid grasp of how Hamiltonian Monte Carlo works, when it succeeds, and, perhaps most importantly, when it fails.},
+  archiveprefix = {arXiv},
+  keywords = {HMC,Statistics - Methodology},
+  file = {/Users/michelsen/Zotero/storage/7N3P7B7B/Betancourt - 2018 - A Conceptual Introduction to Hamiltonian Monte Car.pdf;/Users/michelsen/Zotero/storage/FUWHE69E/1701.html}
+}
+
+@article{bezanson2017julia,
+  title = {Julia: {{A}} Fresh Approach to Numerical Computing},
+  author = {Bezanson, Jeff and Edelman, Alan and Karpinski, Stefan and Shah, Viral B},
+  date = {2017},
+  journaltitle = {SIAM review},
+  volume = {59},
+  number = {1},
+  pages = {65--98},
+  publisher = {{SIAM}},
+  url = {https://julialang.org/},
+  keywords = {julia}
+}
+
+@article{bingham2019pyro,
+  title = {Pyro: {{Deep}} Universal Probabilistic Programming},
+  author = {Bingham, Eli and Chen, Jonathan P. and Jankowiak, Martin and Obermeyer, Fritz and Pradhan, Neeraj and Karaletsos, Theofanis and Singh, Rohit and Szerlip, Paul A. and Horsfall, Paul and Goodman, Noah D.},
+  date = {2019},
+  journaltitle = {Journal of Machine Learning Research},
+  shortjournal = {J. Mach. Learn. Res.},
+  volume = {20},
+  pages = {28:1--28:6},
+  url = {http://jmlr.org/papers/v20/18-403.html}
+}
+
 @article{borryPyDamageAutomatedAncient2021,
   title = {{{PyDamage}}: Automated Ancient Damage Identification and Estimation for Contigs in Ancient {{DNA}} de Novo Assembly},
   shorttitle = {{{PyDamage}}},
@@ -62,6 +108,14 @@
   abstract = {DNA de novo assembly can be used to reconstruct longer stretches of DNA (contigs), including genes and even genomes, from short DNA sequencing reads. Applying this technique to metagenomic data derived from archaeological remains, such as paleofeces and dental calculus, we can investigate past microbiome functional diversity that may be absent or underrepresented in the modern microbiome gene catalogue. However, compared to modern samples, ancient samples are often burdened with environmental contamination, resulting in metagenomic datasets that represent mixtures of ancient and modern DNA. The ability to rapidly and reliably establish the authenticity and integrity of ancient samples is essential for ancient DNA studies, and the ability to distinguish between ancient and modern sequences is particularly important for ancient microbiome studies. Characteristic patterns of ancient DNA damage, namely DNA fragmentation and cytosine deamination (observed as C-to-T transitions) are typically used to authenticate ancient samples and sequences, but existing tools for inspecting and filtering aDNA damage either compute it at the read level, which leads to high data loss and lower quality when used in combination with de novo assembly, or require manual inspection, which is impractical for ancient assemblies that typically contain tens to hundreds of thousands of contigs. To address these challenges, we designed PyDamage, a robust, automated approach for aDNA damage estimation and authentication of de novo assembled aDNA. PyDamage uses a likelihood ratio based approach to discriminate between truly ancient contigs and contigs originating from modern contamination. We test PyDamage on both on simulated aDNA data and archaeological paleofeces, and we demonstrate its ability to reliably and automatically identify contigs bearing DNA damage characteristic of aDNA. Coupled with aDNA de novo assembly, Pydamage opens up new doors to explore functional diversity in ancient metagenomic datasets.},
   langid = {english},
   file = {/Users/michelsen/Zotero/storage/PG43CP9L/Borry et al. - 2021 - PyDamage automated ancient damage identification .pdf}
+}
+
+@software{bradburyJAXComposableTransformations2018,
+  title = {{{JAX}}: Composable Transformations of {{Python NumPy}} Programs},
+  author = {Bradbury, James and Frostig, Roy and Hawkins, Peter and Johnson, Matthew James and Leary, Chris and Maclaurin, Dougal and Necula, George and Paszke, Adam and Vander\{P\}las, Jake and Wanderman-\{M\}ilne, Skye and Zhang, Qiao},
+  date = {2018},
+  url = {http://github.com/google/jax},
+  version = {0.2.5}
 }
 
 @article{briggsPatternsDamageGenomic2007,
@@ -81,6 +135,16 @@
   pmcid = {PMC1976210},
   keywords = {adna,ancient dna,damage,damage pattern,mismatch},
   file = {/Users/michelsen/Zotero/storage/8RS8X78U/Briggs et al. - 2007 - Patterns of damage in genomic DNA sequences from a.pdf}
+}
+
+@article{carpenter2017stan,
+  title = {Stan: {{A}} Probabilistic Programming Language},
+  author = {Carpenter, Bob and Gelman, Andrew and Hoffman, Matthew D and Lee, Daniel and Goodrich, Ben and Betancourt, Michael and Brubaker, Marcus and Guo, Jiqiang and Li, Peter and Riddell, Allen},
+  date = {2017},
+  journaltitle = {Journal of statistical software},
+  volume = {76},
+  number = {1},
+  publisher = {{Columbia Univ., New York, NY (United States); Harvard Univ., Cambridge, MA (United States)}}
 }
 
 @article{cepeda-cuervoDoubleGeneralizedBetaBinomial2017,
@@ -149,6 +213,18 @@
   file = {/Users/michelsen/Zotero/storage/6ZK3XXI9/Daley and Smith - 2014 - Modeling genome coverage in single-cell sequencing.pdf}
 }
 
+@software{dembinskiScikithepIminuitV22021,
+  title = {Scikit-Hep/Iminuit: V2.8.2},
+  shorttitle = {Scikit-Hep/Iminuit},
+  author = {Dembinski, Hans and Piti Ongmongkolkul and Deil, Christoph and Hurtado, David Menéndez and Schreiner, Henry and Feickert, Matthew and Andrew and Burr, Chris and Watson, Jason and Rost, Fabian and Pearce, Alex and Geiger, Lukas and Wiedemann, Bernhard M. and Gohlke, Christoph and Gonzalo and Drotleff, Jonas and Eschle, Jonas and Neste, Ludwig and Gorelli, Marco Edward and Baak, Max and Zapata, Omar and Odidev},
+  date = {2021-08-15},
+  doi = {10.5281/ZENODO.3949207},
+  abstract = {See changelog on RTD},
+  organization = {{Zenodo}},
+  version = {v2.8.2},
+  keywords = {iminuit}
+}
+
 @article{flagelUnreasonableEffectivenessConvolutional2018,
   title = {The {{Unreasonable Effectiveness}} of {{Convolutional Neural Networks}} in {{Population Genetic Inference}}},
   author = {Flagel, Lex and Brandvain, Yaniv J and Schrider, Daniel R},
@@ -171,6 +247,40 @@
   abstract = {Winner of the 2016 De Groot Prize from the International Society for Bayesian AnalysisNow in its third edition, this classic book is widely considered the leading text on Bayesian methods, lauded for its accessible, practical approach to analyzing data and solving research problems. Bayesian Data Analysis, Third Edition continues to take an applied},
   isbn = {978-0-429-11307-9},
   pagetotal = {675}
+}
+
+@article{gelmanUnderstandingPredictiveInformation2014,
+  title = {Understanding Predictive Information Criteria for {{Bayesian}} Models},
+  author = {Gelman, Andrew and Hwang, Jessica and Vehtari, Aki},
+  date = {2014-11},
+  journaltitle = {Statistics and Computing},
+  shortjournal = {Stat Comput},
+  volume = {24},
+  number = {6},
+  pages = {997--1016},
+  issn = {0960-3174, 1573-1375},
+  doi = {10.1007/s11222-013-9416-2},
+  abstract = {We review the Akaike, deviance, and Watanabe-Akaike information criteria from a Bayesian perspective, where the goal is to estimate expected out-of-sample-prediction error using a biascorrected adjustment of within-sample error. We focus on the choices involved in setting up these measures, and we compare them in three simple examples, one theoretical and two applied. The contribution of this review is to put all these information criteria into a Bayesian predictive context and to better understand, through small examples, how these methods can apply in practice.},
+  langid = {english},
+  keywords = {waic},
+  file = {/Users/michelsen/Zotero/storage/D23ANURG/Gelman et al. - 2014 - Understanding predictive information criteria for .pdf}
+}
+
+@inproceedings{geTuringLanguageFlexible2018,
+  title = {Turing: {{A Language}} for {{Flexible Probabilistic Inference}}},
+  shorttitle = {Turing},
+  booktitle = {Proceedings of the {{Twenty-First International Conference}} on {{Artificial Intelligence}} and {{Statistics}}},
+  author = {Ge, Hong and Xu, Kai and Ghahramani, Zoubin},
+  date = {2018-03-31},
+  pages = {1682--1690},
+  publisher = {{PMLR}},
+  issn = {2640-3498},
+  url = {https://proceedings.mlr.press/v84/ge18b.html},
+  urldate = {2022-11-16},
+  abstract = {Probabilistic programming promises to simplify and democratize probabilistic machine learning, but successful probabilistic programming systems require flexible, generic and efficient inference engines. In this work, we present a system called Turing for building MCMC algorithms for probabilistic programming inference. Turing has a very simple syntax and makes full use of the numerical capabilities in the Julia programming language, including all implemented probability distributions, and automatic differentiation. Turing supports a wide range of popular Monte Carlo algorithms, including Hamiltonian Monte Carlo (HMC), HMC with No-U-Turns (NUTS), Gibbs sampling, sequential Monte Carlo (SMC), and several particle MCMC (PMCMC) samplers. Most importantly, Turing inference is composable: it combines MCMC operations on subsets of variables, for example using a combination of an HMC engine and a particle Gibbs (PG) engine.  We explore several combinations of inference methods with the aim of finding approaches that are both efficient and universal, i.e. applicable to arbitrary probabilistic models. NUTS—a popular variant of HMC that adapts Hamiltonian simulation path length automatically, although quite powerful for exploring differentiable target distributions, is however not universal. We identify some failure modes for the NUTS engine, and demonstrate that composition of PG (for discrete variables) and NUTS (for continuous variables) can be useful when the NUTS engine is either not applicable, or simply does not work well. Our aim is to present Turing and its composable inference engines to the world and encourage other researchers to build on this system to help advance the field of probabilistic machine learning.},
+  eventtitle = {International {{Conference}} on {{Artificial Intelligence}} and {{Statistics}}},
+  langid = {english},
+  file = {/Users/michelsen/Zotero/storage/GC5T4QAA/Ge et al. - 2018 - Turing A Language for Flexible Probabilistic Infe.pdf}
 }
 
 @article{gilbertAssessingAncientDNA2005,
@@ -204,6 +314,22 @@
   abstract = {The modelling of pandemics has become a critical aspect in modern society. Even though artificial intelligence can help the forecast, the implementation of ordinary differential equations which estimate the time development in the number of susceptible, (exposed), infected and recovered (SIR/SEIR) individuals is still important in order to understand the stage of the pandemic. These models are based on simplified assumptions which constitute approximations, but to what extent this are erroneous is not understood since many factors can affect the development. In this paper, we introduce an agent-based model including spatial clustering and heterogeneities in connectivity and infection strength. Based on Danish population data, we estimate how this impacts the early prediction of a pandemic and compare this to the long-term development. Our results show that early phase SEIR model predictions overestimate the peak number of infected and the equilibrium level by at least a factor of two. These results are robust to variations of parameters influencing connection distances and independent of the distribution of infection rates.},
   langid = {english},
   keywords = {agent-based modelling,COVID-19,fitting,pandemics,spatial heterogenity}
+}
+
+@article{homanNoUturnSamplerAdaptively2014,
+  title = {The {{No-U-turn}} Sampler: Adaptively Setting Path Lengths in {{Hamiltonian Monte Carlo}}},
+  shorttitle = {The {{No-U-turn}} Sampler},
+  author = {Homan, Matthew D. and Gelman, Andrew},
+  date = {2014-01-01},
+  journaltitle = {The Journal of Machine Learning Research},
+  shortjournal = {J. Mach. Learn. Res.},
+  volume = {15},
+  number = {1},
+  pages = {1593--1623},
+  issn = {1532-4435},
+  abstract = {Hamiltonian Monte Carlo (HMC) is a Markov chain Monte Carlo (MCMC) algorithm that avoids the random walk behavior and sensitivity to correlated parameters that plague many MCMC methods by taking a series of steps informed by first-order gradient information. These features allow it to converge to high-dimensional target distributions much more quickly than simpler methods such as random walk Metropolis or Gibbs sampling. However, HMC's performance is highly sensitive to two user-specified parameters: a step size ε and a desired number of steps L. In particular, if L is too small then the algorithm exhibits undesirable random walk behavior, while if L is too large the algorithm wastes computation. We introduce the No-U-Turn Sampler (NUTS), an extension to HMC that eliminates the need to set a number of steps L. NUTS uses a recursive algorithm to build a set of likely candidate points that spans a wide swath of the target distribution, stopping automatically when it starts to double back and retrace its steps. Empirically, NUTS performs at least as efficiently as (and sometimes more effciently than) a well tuned standard HMC method, without requiring user intervention or costly tuning runs. We also derive a method for adapting the step size parameter ε on the fly based on primal-dual averaging. NUTS can thus be used with no hand-tuning at all, making it suitable for applications such as BUGS-style automatic inference engines that require efficient "turnkey" samplers.},
+  keywords = {adaptive Monte Carlo,Bayesian inference,dual averaging,Hamiltonian Monte Carlo,Markov chain Monte Carlo},
+  file = {/Users/michelsen/Zotero/storage/FN4ZBJNS/Homan and Gelman - 2014 - The No-U-turn sampler adaptively setting path len.pdf}
 }
 
 @article{jonssonMapDamage2FastApproximate2013,
@@ -270,6 +396,24 @@
   langid = {english},
   keywords = {Anthropology,Genomics,Mitochondrial genome},
   file = {/Users/michelsen/Zotero/storage/7CA6P58N/Krause et al. - 2010 - The complete mitochondrial DNA genome of an unknow.pdf;/Users/michelsen/Zotero/storage/NF3GMGWB/krause2010.pdf.pdf;/Users/michelsen/Zotero/storage/N2L4XIDG/nature08976.html}
+}
+
+@inproceedings{lamNumbaLLVMbasedPython2015,
+  title = {Numba: A {{LLVM-based Python JIT}} Compiler},
+  shorttitle = {Numba},
+  booktitle = {Proceedings of the {{Second Workshop}} on the {{LLVM Compiler Infrastructure}} in {{HPC}}},
+  author = {Lam, Siu Kwan and Pitrou, Antoine and Seibert, Stanley},
+  date = {2015-11-15},
+  series = {{{LLVM}} '15},
+  pages = {1--6},
+  publisher = {{Association for Computing Machinery}},
+  location = {{New York, NY, USA}},
+  doi = {10.1145/2833157.2833162},
+  url = {https://github.com/numba/numba},
+  abstract = {Dynamic, interpreted languages, like Python, are attractive for domain-experts and scientists experimenting with new ideas. However, the performance of the interpreter is often a barrier when scaling to larger data sets. This paper presents a just-in-time compiler for Python that focuses in scientific and array-oriented computing. Starting with the simple syntax of Python, Numba compiles a subset of the language into efficient machine code that is comparable in performance to a traditional compiled language. In addition, we share our experience in building a JIT compiler using LLVM[1].},
+  isbn = {978-1-4503-4005-2},
+  keywords = {compiler,LLVM,numba,Python},
+  file = {/Users/michelsen/Zotero/storage/UDC9TQRX/Lam et al. - 2015 - Numba a LLVM-based Python JIT compiler.pdf}
 }
 
 @article{liInferenceHumanPopulation2011,
@@ -389,6 +533,19 @@
   file = {/Users/michelsen/Zotero/storage/6557LKBM/mullis1986.pdf.pdf}
 }
 
+@book{nealMCMCUsingHamiltonian2011,
+  title = {{{MCMC Using Hamiltonian Dynamics}}},
+  author = {Neal, Radford M.},
+  date = {2011-05-10},
+  publisher = {{Routledge Handbooks Online}},
+  doi = {10.1201/b10905-7},
+  url = {https://www.routledgehandbooks.com/doi/10.1201/b10905-7},
+  urldate = {2022-11-16},
+  abstract = {Since their popularization in the 1990s, Markov chain Monte Carlo (MCMC) methods have revolutionized statistical computing and have had an especially profound impact on the practice of Bayesian statistics. Furthermore, MCMC methods have enabled the development and use of intricate models in an astonishing array of disciplines as diverse as fisheries science and economics. The wide-ranging practical importance of MCMC has sparked an expansive and deep investigation into fundamental Markov chain theory. The Handbook of Markov Chain Monte Carlo provides a reference for the broad audience of developers and users of MCMC methodology interested in keeping up with cutting-edge theory and applications. The first half of the book covers MCMC foundations, methodology, and algorithms. The second half considers the use of MCMC in a variety of practical applications including in educational research, astrophysics, brain imaging, ecology, and sociology. The in-depth introductory section of the book allows graduate students and practicing scientists new to MCMC to become thoroughly acquainted with the basic theory, algorithms, and applications. The book supplies detailed examples and case studies of realistic scientific problems presenting the diversity of methods used by the wide-ranging MCMC community. Those familiar with MCMC methods will find this book a useful refresher of current theory and recent developments.},
+  isbn = {978-1-4200-7941-8 978-1-4200-7942-5},
+  langid = {english}
+}
+
 @unpublished{ngDna2vecConsistentVector2017,
   title = {Dna2vec: {{Consistent}} Vector Representations of Variable-Length k-Mers},
   shorttitle = {Dna2vec},
@@ -506,6 +663,19 @@
   keywords = {ancient DNA,contamination,paleogenomics},
   annotation = {\_eprint: https://onlinelibrary.wiley.com/doi/pdf/10.1002/bies.202000081},
   file = {/Users/michelsen/Zotero/storage/KBB3PELA/Peyrégne and Prüfer - 2020 - Present-Day DNA Contamination in Ancient DNA Datas.pdf;/Users/michelsen/Zotero/storage/LBU38AHA/10.1002@bies.202000081.pdf.pdf}
+}
+
+@unpublished{phanComposableEffectsFlexible2019,
+  title = {Composable {{Effects}} for {{Flexible}} and {{Accelerated Probabilistic Programming}} in {{NumPyro}}},
+  author = {Phan, Du and Pradhan, Neeraj and Jankowiak, Martin},
+  date = {2019-12-24},
+  eprint = {1912.11554},
+  eprinttype = {arxiv},
+  primaryclass = {cs, stat},
+  abstract = {NumPyro is a lightweight library that provides an alternate NumPy backend to the Pyro probabilistic programming language with the same modeling interface, language primitives and effect handling abstractions. Effect handlers allow Pyro's modeling API to be extended to NumPyro despite its being built atop a fundamentally different JAX-based functional backend. In this work, we demonstrate the power of composing Pyro's effect handlers with the program transformations that enable hardware acceleration, automatic differentiation, and vectorization in JAX. In particular, NumPyro provides an iterative formulation of the No-U-Turn Sampler (NUTS) that can be end-to-end JIT compiled, yielding an implementation that is much faster than existing alternatives in both the small and large dataset regimes.},
+  archiveprefix = {arXiv},
+  keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Computer Science - Programming Languages,G.3,I.2.5,I.2.5; G.3,numpyro,Statistics - Machine Learning},
+  file = {/Users/michelsen/Zotero/storage/9UA9GM25/Phan et al. - 2019 - Composable Effects for Flexible and Accelerated Pr.pdf;/Users/michelsen/Zotero/storage/75MJSLHW/1912.html}
 }
 
 @article{ramageHiddenMarkovModels2007,
