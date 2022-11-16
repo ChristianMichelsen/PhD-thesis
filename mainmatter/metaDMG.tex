@@ -61,7 +61,7 @@ In the metagenomic case where single DNA reads are mapped to multiple species, \
         Illustration of the lowest common ancestor (LCA) for taxonomic trees. Here the LCA of alignment 1 and 2 is Subspecies I, while the LCA of all four reads is Genus X. The dots ($\dots$) refers to other taxonomic levels, e.g. family and order.
         \label{fig:tree-LCA}}
     \centering
-    \includegraphics[trim={3cm 19.5cm 8.5cm 2.3cm}, clip,width=0.8\textwidth]{figures/tree.pdf}
+    \includegraphics[trim={3cm 19.5cm 8.5cm 2.3cm}, clip, width=0.8\textwidth]{figures/tree.pdf}
 \end{figure}
 
 Given the nucleotide misincorporations, either coming from a single-reference alignment file or after LCA in the metagenomic case, we fit eq. \eqref{eq:BetaBinomial_expectation_variance} and \eqref{eq:damage_function} with a Bayesian model. This is done to ensure the optimal inference of the parameters, $A$, $q$, and $c$, and to account for the uncertainty in the data. Bayesian inference also allows for the inclusion of domain knowledge in the form of the prior distribution by Bayes theorem. Bayes theorem is based on the law of conditional probability \autocite{barlowStatisticsGuideUse1993} stating that the probability of two events, $A$ and $B$, both happening, $P(A \cap B)$, is given by the probability of $B$, $P(B)$ times the probability of $A$ given $B$, $P(A|B)$:
