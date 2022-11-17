@@ -109,7 +109,7 @@
 \RequirePackage{xparse}
 \RequirePackage{xpatch}
 \RequirePackage[				% use biblatex for bibliography
-	% url=false,
+	url=false,
 	% citestyle 	= numeric-comp,
 	% sorting		= none,
 	doi=true,
