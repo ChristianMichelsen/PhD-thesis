@@ -10,62 +10,7 @@
 
 \section{Anestesiology -- a Machine Learning Approach }
 \label{section:machine-learning}
-
-This section explains the technical background behind Paper II, see \autoref{chapter:hospital}. This study investigates the potential advantages of using a modern machine-learning model compared to classical logistic regression to predict the risk of patients being re-hospitalized after fast-track hip and knee replacements. As such, this is a binary classification problem where the patient's risk-score is predicted based on historical data.
-
-Most classification and regression problems fall under the same machine learning (ML) branch called supervised learning. In supervised learning, the goal is to find the optimal hypothesis $h^*$ in the hypothesis set $\mathcal{H}$ that matches the unknown, ``true'' data-generating function $f: \mathcal{X} \rightarrow \mathcal{Y}$ as good as possible, where $\mathcal{X}$ is the input space and $\mathcal{Y}$ is the output space. Assuming that we have access to realizations of $f$, the so-called training data $\mathcal{D}_\mathrm{train} = \{(\mathbf{x}_i, y_i)\}_{i=1}^N$, we can use a learning algorithm $\mathcal{A}$ combined with the training data to estimate $h^*$ \autocite{abu-mostafaLearningData2012a}. Here $N$ refers to the number of training samples and $\mathbf{x}_i$ is the $i$th observation with the true label $y_i$. This process is illustrated in \autoref{fig:ML-setup}.
-
-\begin{figure}[htbp]
-    \sidecaption{
-        Illustration of how to learn from data in a supervised learning setting. Adapted from \autocite{abu-mostafaLearningData2012a}.
-        \label{fig:ML-setup}}
-    \centering
-    \includegraphics[width=0.9\textwidth]{figures/illustrator/ML-learning.pdf}
-\end{figure}
-
-Both the logistic regression (LR) and ML model can be viewed through the lens of \autoref{fig:ML-setup}, just with $|\mathcal{H}_\mathrm{LR}| \ll |\mathcal{H}_\mathrm{ML}|$, i.e. the machine learning model is a lot more complex than the logistic regression model\sidenote{And the hypothesis space thus is significantly larger.}. To predict the performance of $h^*$ on new, unseen data, the naive method would be to train on all of the data and evaluate on the same, however, this would have a high risk of overfitting the data and thus biasing the predicted performance\sidenote{Especially for high cardinality hypothesis sets.} \parencite{abu-mostafaLearningData2012a}.
-
-To avoid this and get more accurate estimates of the performance of $h^*$, we use a technique called cross-validation (CV). In the simplest way, this can be done by splitting the data into two sets, one called the training and one called the validation set, and then only train on the training set. Afterwards the trained model can be evaluated on the validation set without biasing the performance estimate. This process can further be refined by splitting the data into $K$ folds and then repeating the process $K$ times, where each fold is used as the validation set once.
-This is called $K$-fold cross-validation and is illustrated in \autoref{fig:ML-crossval-kfold} \autocite{murphyMachineLearningProbabilistic2012,hastieElementsStatisticalLearning2016}.
-$K$-fold cross validation works well in many cases, yet in the case of temporal data, it also risks introducing bias in the performance estimates, since, in the different folds, it, effectively, is allowed to ``look into the future''. The most extreme case of this is shown in the bottom of \autoref{fig:ML-crossval-kfold} where the model trains on all future and present data and is then evaluated only on past data. In many time dependent datasets, this is undesirable. Instead, we use a technique called temporal cross validation \parencite{tashmanOutofsampleTestsForecasting2000a}, see \autoref{fig:ML-crossval-temporal}, which circumvents this problem by only allowing the model to train on past data and evaluate on future data. As the patient data is time dependent\sidenote{The fraction of rehospitalizations decreased over time due to surgerilogical improvements.}, this is the technique we use in Paper II.
-
-\begin{figure}[htbp]
-    \centering
-    \sidecaption{
-        Two types of cross validation: $K$-fold cross validation, and temporal cross validation. Both figures from \cite{michelsenPhysicistApproachMachine2020}.
-        \label{fig:ML-crossval}}
-    \begin{subfigure}{.5\textwidth}
-        \centering
-        \includegraphics[trim={14cm 17cm 1.95cm 6.5cm}, clip, width=.8\linewidth]{figures/MasterThesis-cross-validation}
-        \caption{$K$-fold cross validation}
-        \label{fig:ML-crossval-kfold}
-    \end{subfigure}%
-    \begin{subfigure}{.5\textwidth}
-        \centering
-        \includegraphics[trim={14.14cm 7.67cm 2.1cm 16.5cm}, clip, width=.8\linewidth]{figures/MasterThesis-cross-validation}
-        \caption{Temporal cross validation}
-        \label{fig:ML-crossval-temporal}
-    \end{subfigure}
-\end{figure}
-
-The training of the learning model $\mathcal{A}$ itself is model-dependent and will not be covered in this thesis, see \parencite{michelsenPhysicistApproachMachine2020} for a more detailed description of the training process. This is not the only way to optimize the performance of  $\mathcal{A}$, albeit it is the primary one. In addition to the internal parameters of the model, some parameters are external to the model in the sense that they are not optimized by the model itself, but rather by the user. These are called hyperparameters and are often optimized using a technique called hyperparameter optimization (HPO). In the case of logistic regression, the number of variables to include would be an example of a hyperparameter; in the case of a decision tree model, the depth of the tree. Hyperparameter optimization can be performed in many ways, where the classical one is through grid search, see \autoref{fig:ML-hpo-GS}.
-\marginfig{figures/MasterThesis-hpo-grid.pdf}{Illustration of grid search. Figure from \cite{michelsenPhysicistApproachMachine2020}.}{fig:ML-hpo-GS}
-
-In grid search all combinations of the hyperparameters (the cartesian product) are tried and the best combination is chosen. This is a simple and intuitive approach, however, it scales exponentially, i.e. very poorly, with the number of hyperparameters\sidenote{As such, grid search suffers from the curse of dimensionality.}. In addition to this, it depends on the user-defined grid, which might not be optimal. To circumvent this, a technique called random search (RS) was developed \parencite{bergstraRandomSearchHyperparameter2012a}. Random search is a randomized version of grid search, where the hyperparameters are sampled randomly from a distribution. This allows for a more efficient sampling of the hyperparameter space, see \autoref{fig:ML-hpo-RS}, and further lets the user decide on the number of iterations beforehand.
-
-\marginfig{figures/MasterThesis-hpo-random.pdf}{Illustration comparing grid search to random seach. The height of green surve is the score-function which has to be optimized. Figure adapted from \cite{bergstraRandomSearchHyperparameter2012a}.}{fig:ML-hpo-RS}
-
-The disadvantage of random search is that all draws are fully independent. While this allows for easy parallelisation of the algorithm, this also means that each new sample might be infinitesimal close in the hyperparameter space to a previous sample with bad performance, which with high probability will thus also have a high loss. An approach that does take the history of the previous samples' performance into consideration is Bayesian optimization \parencite{brochuTutorialBayesianOptimization2010a}. In Bayesian optimization each successive hyperparameter is chosen based on an acquisition function which optimizes the expected improvement in the performance of the model. This is illustrated in \autoref{fig:ML-hpo-BO}. This leaves the user with the task of choosing between ``exploitation'' and ``exploration'' of the hyperparameter space in the definition of the acquisition function, yet most implementations of bayesian optimization have decent default settings.
-
-\begin{figure}[htbp]
-    \sidecaption{
-        Illustration of the learning process of Bayesian optimization. The previous observations are shown as black dots and the true objective function is shown as a dashed black line. This line is fitted with Gaussian processes which is shown as the solid line with its uncertainty in purple. The acquisition function is shown in green and its maximum decides what the next iteration of the hyperparameter value(s) should be \parencite{michelsenPhysicistApproachMachine2020}.
-        \label{fig:ML-hpo-BO}}
-    \centering
-    \includegraphics[width=0.9\textwidth]{figures/MasterThesis-hpo-bayesian}
-\end{figure}
-
-We use the Python package Optuna \autocite{akibaOptunaNextgenerationHyperparameter2019} for HPO in Paper IV due to its ease of use and its support for Bayesian optimization. In particular, we use the Tree-structured Parzen Estimator algorithm for the Bayesian optimization and a median stopping rule to minimize optimization time \parencite{bergstraAlgorithmsHyperParameterOptimization2011}. This allowed for a good comporise between optimization time and performance.
+\input{mainmatter/hospital.tex}
 
 
 \section{COVID-19 and Agent Based Models}
