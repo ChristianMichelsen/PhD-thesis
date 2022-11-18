@@ -18,30 +18,65 @@
 
 \section{Diffusion Models and Bayesian Model Comparison}
 \label{section:diffusion}
-asdasdas
 
+Since the dawn of time, Humans have noticed that they looked like their siblings and parents and wondered why. People have always thought about the balance between nature and nurture as in the famous fairy tale ``The Ugly Duckling'' by Hans Christian Andersen from 1843. Two decades later, Gregor Mendel founded genetics as a modern, scientifical discipline with his studies on trait inheritance in pea plants \autocite{mendelgregorVersucheUberPflanzenhybriden1866}, although it was not until a century later that Watson and Crick discovered the double helix structure of DNA \autocite{watsonMolecularStructureNucleic1953}.
+
+Since then, the field of genetics has grown exponentially and has become a central part of modern biology today. While \autoref{section:ancientDNA} discusses the behaviour of ancient DNA, Paper IV focusses on how living cells work and, in particular, how they regulate the transcription of DNA in the cell nucleus. All cells share the same building blocks in the form of DNA, however, they do not express the same instructions (genes). One of the most fundamental challenges in biology is understanding the mechanism of how cells can express and silence specific regions of the genome.
+
+Currently, different biological models try to explain the physical principles creating the heterogeneous environment in the cell nucleus of eukaryotic cells.
+One of these is the polymer-bridging model (PBM) that models the micro compartments called the foci. The cell nucleus contains two different types of loci; the repair foci and the silencing foci. Paper IV studies the physical mechanism of the formation of the silencing foci.
+
+\autoref{fig:diffusion-model} illustrates the parts of the cell nucleus relevant to the polymer-bridging model. Inside the nucleus, DNA fibers are curled up where some parts of the DNA locate inside the silencing foci. Inside the silencing foci, the PBM predicts binding and bridging sites that interact with the DNA fiber through the SIR proteins, which is up-regulated inside the the region of the foci \autocite{heltbergPhysicalObservablesDetermine2021}. The SIR proteins repress the underlying genes, and, due to the increased concentration inside the focus, the foci are termed silencing foci.
 
 \begin{figure}[htbp]
     \sidecaption{
-        Illustration of DNA damage. Ancient DNA is often highly fragmented with short reads compared to modern, present-day DNA, and can contain uracils (U). These uracils will then be misread as thymines (T) while sequencing leading to C-T nucleotide misincorporations. This is primaryly happening at the end of the reads. Modified from XXX.
+        Illustration of the cell nucleus. The nucleus membrane is shown in red and the repair foci in yellow. The black line represents the DNA fiber which is curled up in the silencing foci in green. The right side of the figure shows a zoomin in view of the silencing foci according to the polymer-bridging model with the binding and bridging sites that interact with the SIR proteins. The tracking of the SIR molecules is shown as blue stars.
         \label{fig:diffusion-model}}
     \centering
     \includegraphics[trim={0mm 0mm 0mm 0mm}, clip, width=\textwidth]{figures/illustrator/diffusion-model.pdf}
 \end{figure}
 
-% In order to obtain fine-tuned regulation of protein production while maintaining cell integrity, it is of fundamental importance to living organisms to express a specific subset of the genes abailable in the genome.
-% One way to achieve this is through the formation of subcompartments in the nucleus, known as foci, that can form at various locations on the DNA fibers and repress the transcriptional activity of all genes covered.
-% In this work we investigate the physical nature of such foci, by applying single molecule microscopy in living cells. Here we study the motion of the protein SIR3.
-% By combining various statistical methods, and combining a frequentist with a bayesian approach, we extract the diffusion properties for motion in a repair foci. In order to obtain useful information based on this, we derive similar measures for the foci itself, the motion of SIR3 outside the foci and other mutants of the cell. We reveal that the behaviour inside a repair foci is highly immobile and we compare this to theoretical expressions. Based on this we hypothesize that the repair foci is probably not a result of a second order liquid-liquid phase separation but rather a so-called Polymer Bridgng Model with numerous binding sites.
+With the use of single particle tracking and photoactivated localization microscopy, it is possible to track the individual SIR molecules at high temporal and spatial resolution \autocite{oswaldImagingQuantificationTransmembrane2014,manleyHighdensityMappingSinglemolecule2008}. As the SIR molecules are assumed to follow a diffusion process, the tracking allows for the determination of the diffusion coefficients of cell nucleus, which help quantify the heterogeneous structure in the nucleus.
 
-% Understanding the physical principles of how cells can express and silence specic regions of the genome presents one of the most fundamental challenges in biology. As a model to study this, budding yeast chromosomes is a strong candidate, since it has very few repetitive sequences outside of the rDNA compared to other eucaryotes that contain centromeric hetero-chromatin.
-% When haploid cells grow at their maximal rate, one characteristic aspect is that 32 telomeres accumulate at the nuclear envelope allowing them to form $\approx$3–5 foci. The sizes of these are in the order of a few hundreds of nanometer and therefore below the diffraction limit of conventional epifluorescence microscopes.
+Assuming classical Brownian motion in 2D, the displacement lengths, $\Delta r_i$, defined as the distances between subsequent observations $\vec{x}$:
+\begin{align}
+    \Delta r_i = || \vec{x}_{i+1} - \vec{x}_{i} ||,
+\end{align}
+follows a Rayleigh distribution:
+\begin{align}
+    \mathrm{Rayleigh}(r; \sigma) =\frac{r}{\sigma^2} e^{-r^2/(2\sigma^2)} \quad r>0,
+\end{align}
+with scale parameter $\sigma = \sqrt{2d\tau}$, where $d$ is the diffusion coefficient and $\tau$ is the time between observations \autocite{bakerInferenceDiffusionCoefficients2021,andersonTrackingCellSurface1992}
+.
 
-% Inside such foci, the silent regulatory factors Sir2, Sir3 and Sir4 concentrate into the form of the SIR complex \parencite{palladino_sir3_1993}. These are therefore termed silencing foci, since they can repress the expression of the underlying genes through interaction with the telomeric protein Rap1, and thereby spread on chromatin and potentially forming a compact chromatin structure. Studies in vitro has revealed that this complex associates with nucleosome in a 1:2:1 stochiometry and can significantly compact chromatin \parencite{swygert_sir_2018}.
 
-% The sequestration of SIR proteins from silent chromatin favor the subtelomeric repression and the position of telomeres inside these foci favors faithful recombination events upon double strand break \parencite{batte_recombination_2017}. Furthermore, it also prevents the binding of the SIRs at specific groups of promoters in the genome \parencite{maillet_evidence_1996,marcand_silencing_1996,taddei_functional_2009}.
+\begin{figure}[htbp]
+    \sidecaption{
+        A graphical representation of the Bayesian model case of two diffusion components using the directed factor graph notation \parencite{dietzDirectedFactorGraph2022}. Here $d_1$ is the diffusion coefficient, $\mathcal{R}_1$ is the $d$-parameterized Rayleigh distribution and $\mathcal{R}_{1,2}$ is the mixture model of the Rayleigh distributions with a $\theta$ prior.
+        \label{fig:diffusion-model-2D}}
+    \centering
+    \begin{tikzpicture}[scale=1.2, transform shape]
 
-% In the foci, the telomere composition is not fixed, however telomeres show preferential attachment to other telomeres coupled to chromosome arms of approximately equal length \parencite{therizols_chromosome_2010,schober_controlled_2008,duan_three-dimensional_2010}. This process of telomeres grouping in a limited number of foci requires Sir3 association to telomeres but is independent of heterochromatin formation \parencite{ruault_clustering_2011} and these foci has been revealed to fuse into bigger foci or hyperclusters when SIR3 is overexpressed, suggesting a regulatory role on telomere clustering for SIR3 \parencite{ruault_clustering_2011}. \\
-% In this work we investigate the physical mechanism of the formation of silencing foci. In particular we use using Single Particle Tracking (SPT) and Photo Activable Localization Microscopy (PALM) in Saccharomyces cerevisiae cells in order to obtain precise information obout the dynamics of single particles in the heterogenous environment. In this, SPT is a powerful technique that makes the microscopic steps taken by the molecules observable, by taking ``live'' recordings of individual molecules in a cell at high temporal and spatial resolution (50 Hz, 30 nm) \parencite{dolgin_sounds_2019,manley_high-density_2008,oswald_imaging_2014}. Based on this in vivo movement, SPT allows for grouping specific proteins into subpopulations defined by the measured diffusion coefficients. From this it is possible to quantify the motion of each subpopulation and thereby estimating the residence times in different parts of the nucleus, allowing us to estimate the free-energy of the system. To assist the SPT measurements, PALM can establish a density maps of the molecules of interest by their position at 30 nm resolution.
+        \node[latent]                (D1)   {$d_1$}; %
+        \node[latent, below=0.6 of D1]   (D2)   {$d_2$}; %
+        \node (b) at ($(D1)!0.5!(D2)$) {};
 
-% Using these methods we have assessed the dynamics of SIR3 cells with silencing foci. We find that inside the silencing foci, SIR3 moves significantly slower and we relate this to the motion of the the whole focus itself. This allow us to identify the diffusion properties of both free telomeres, and telomeres inside a focus. Next we apply, Sir4 deprived mutants and observe that the foci has disappeared, allowing us to extract the free diffusion coefficient of SIR3. Finally we use this to extract the free energy of the molecules inside the repair foci, and we compare this to the theoretical prediction, assuming that the repair foci belongs to the Polymer-Bridging model. Here we find a good agreement, thus suggesting that the physical nature of these foci is really a dense collection of multiple binding sites that suppress the movement of molecules while enhancing their concentration is the formed region.
+        \factor [right=0.6 of D1]   {R1}   {above:$\mathcal{R}_1$}   {D1}  {} ; %
+        \factor [right=0.6 of D2]   {R2}   {above:$\mathcal{R}_2$}   {D2}  {} ; %
+
+        \node[latent, right=1.5 of D1]   (theta)   {$\theta$}; %
+
+        \factor[right=2 of b] {R12} {below:$\mathcal{R}_{1,2}$} {R1,R2,theta} {} ; %
+
+        \node[obs, right=of R12]   (delta_r)   {$\Delta r$}; %
+        \edge {R12} {delta_r}; %
+
+        \plate[inner sep=0.25cm, xshift=-0.12cm, yshift=0.05cm]  {plate1} {(delta_r)}  {$N$}; %
+
+    \end{tikzpicture}
+    % \rule{\hsize}{1pt}
+\end{figure}
+
+
+
+% \AtEndEnvironment{wrapfigure}{\vskip8pt\noindent{\rule{\hsize}{1pt}}}
