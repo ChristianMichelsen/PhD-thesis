@@ -19,14 +19,14 @@
 \section{Diffusion Models and Bayesian Model Comparison}
 \label{section:diffusion}
 
-Since the dawn of time, Humans have noticed that they looked like their siblings and parents and wondered why. People have always thought about the balance between nature and nurture as in the famous fairy tale ``The Ugly Duckling'' by Hans Christian Andersen from 1843. Two decades later, Gregor Mendel founded genetics as a modern, scientifical discipline with his studies on trait inheritance in pea plants \autocite{mendelgregorVersucheUberPflanzenhybriden1866}, although it was not until a century later that Watson and Crick discovered the double helix structure of DNA \autocite{watsonMolecularStructureNucleic1953}.
+Since the dawn of time, humans have noticed that they looked like their siblings and parents and wondered why. People have always thought about the balance between nature and nurture, as in the famous fairy tale ``The Ugly Duckling'' by Hans Christian Andersen from 1843. Two decades later, Gregor Mendel founded genetics as a modern, scientifical discipline with his studies on trait inheritance in pea plants \autocite{mendelgregorVersucheUberPflanzenhybriden1866}, although it was not until a century later that Watson and Crick discovered the double helix structure of DNA \autocite{watsonMolecularStructureNucleic1953}.
 
 Since then, the field of genetics has grown exponentially and has become a central part of modern biology today. While \autoref{section:ancientDNA} discusses the behaviour of ancient DNA, Paper IV focusses on how living cells work and, in particular, how they regulate the transcription of DNA in the cell nucleus. All cells share the same building blocks in the form of DNA, however, they do not express the same instructions (genes). One of the most fundamental challenges in biology is understanding the mechanism of how cells can express and silence specific regions of the genome.
 
 Currently, different biological models try to explain the physical principles creating the heterogeneous environment in the cell nucleus of eukaryotic cells.
 One of these is the polymer-bridging model (PBM) that models the micro compartments called the foci. The cell nucleus contains two different types of loci; the repair foci and the silencing foci. Paper IV studies the physical mechanism of the formation of the silencing foci.
 
-\autoref{fig:diffusion-model} illustrates the parts of the cell nucleus relevant to the polymer-bridging model. Inside the nucleus, DNA fibers are curled up where some parts of the DNA locate inside the silencing foci. Inside the silencing foci, the PBM predicts binding and bridging sites that interact with the DNA fiber through the SIR proteins, which is up-regulated inside the the region of the foci \autocite{heltbergPhysicalObservablesDetermine2021}. The SIR proteins repress the underlying genes, and, due to the increased concentration inside the focus, the foci are termed silencing foci.
+\autoref{fig:diffusion-model} illustrates the parts of the cell nucleus relevant to the polymer-bridging model. Inside the nucleus, DNA fibers are curled up and some parts of the DNA locate inside the silencing foci. Inside the silencing foci, the PBM predicts binding and bridging sites that interact with the DNA fiber through the SIR proteins, which is up-regulated inside the the region of the foci \autocite{heltbergPhysicalObservablesDetermine2021}. The SIR proteins repress the underlying genes, and, due to the increased concentration inside the focus, the foci are termed silencing foci.
 
 \begin{figure}[htbp]
     \sidecaption{
@@ -55,7 +55,7 @@ with scale parameter $\sigma = \sqrt{2d\tau}$, where $d$ is the diffusion coeffi
         A graphical representation of the Bayesian model case of two diffusion components using the directed factor graph notation \parencite{dietzDirectedFactorGraph2022}. Here $d_1$ is the diffusion coefficient, $\mathcal{R}_1$ is the $d$-parameterized Rayleigh distribution and $\mathcal{R}_{1,2}$ is the mixture model of the Rayleigh distributions with a $\theta$ prior.
         \label{fig:diffusion-model-2D}}
     \centering
-    \begin{tikzpicture}[scale=1.2, transform shape]
+    \begin{tikzpicture}[scale=1.5, transform shape]
 
         \node[latent]                (D1)   {$d_1$}; %
         \node[latent, below=0.6 of D1]   (D2)   {$d_2$}; %

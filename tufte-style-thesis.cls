@@ -64,7 +64,8 @@
 	hypcap=false				% hypcap=true spits an error
 ]{caption}						% for caption formatting
 \RequirePackage[T1]{fontenc}	% font encoding
-\RequirePackage[osf]{libertinus}% main font
+% \RequirePackage[osf]{libertinus}% main font
+\RequirePackage{libertinus}% main font
 \RequirePackage{libertinust1math}
 \RequirePackage{gillius}		% sans font
 \RequirePackage[
@@ -283,7 +284,7 @@
    \expandafter\zfoo\people{##1}##1#1\relax
 }
 \newcommand\person[3]{
-    \updatepeople{#1 & #2 & #3 \\}
+    \updatepeople{#1: & #2, & #3 \\}
 }
 
 %	logos
@@ -363,7 +364,7 @@
 
 		\vskip 20pt
 
-		\emph{This thesis has been submitted to the \\PhD School of The Faculty of Science, \\University of Copenhagen}
+		\emph{This thesis has been submitted to the \\PhD School of The Faculty of Science, \\University of Copenhagen.}
 
 		\end{minipage}
 
