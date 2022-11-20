@@ -39,7 +39,7 @@ where $p$ is the probability of success (a C-to-T substitution). One of the issu
 
 Comparing \autoref{eq:Binomial_expectation_variance} and \autoref{eq:BetaBinomial_expectation_variance}, it is seen that the variance of the beta-binomial model is no longer (strictly) proportional to the mean, but instead is a function of the dispersion parameter, $\phi$, allowing for higher variance than the binomial-only model. When $\phi = 0$, the variance of the beta-binomial model is $N$ times larger, and when $\phi \rightarrow \infty$ the variance reduces to the variance of the binomial model, showing that the beta-binomial model is a generalization of the binomial model.
 
-\autoref{eq:BetaBinomial_expectation_variance} shows how to model the C-to-T damage at a specific base position in the read. We model the position-dependent damage frequency, $f(x) = k(x) \ N(x)$, see \autoref{fig:dna-damage-overview}, as a function of the distance from the end of the read, $x$, with an exponential decay:
+\autoref{eq:BetaBinomial_expectation_variance} shows how to model the C-to-T damage at a specific base position in the read. We model the position-dependent damage frequency, $f(x) = k(x) / N(x)$, see \autoref{fig:dna-damage-overview}, as a function of the distance from the end of the read, $x$, with an exponential decay:
 \begin{align}
     f(x; A, q, c) = A(1-q)^{x-1} + c.
     \label{eq:damage_function}
