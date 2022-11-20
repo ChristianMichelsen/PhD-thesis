@@ -30,7 +30,7 @@ One of these is the polymer-bridging model (PBM) that models the micro compartme
 
 \begin{figure}[htbp]
     \sidecaption{
-        Illustration of the cell nucleus. The nucleus membrane is shown in red and the repair foci in yellow. The black line represents the DNA fiber which is curled up in the silencing foci in green. The right side of the figure shows a zoomin in view of the silencing foci according to the polymer-bridging model with the binding and bridging sites that interact with the SIR proteins. The tracking of the SIR molecules is shown as blue stars.
+        Illustration of the cell nucleus. The nucleus membrane is shown in red and the repair foci in yellow. The black line represents the DNA fiber which is curled up in the silencing foci in green. The right side of the figure shows a zoomin in view of the silencing foci according to the polymer-bridging model with the binding and bridging sites that interact with the SIR proteins. The tracking of the SIR molecules is shown as blue stars. Partly adapted from \autocite{heltbergPhysicalObservablesDetermine2021}.
         \label{fig:diffusion-model}}
     \centering
     \includegraphics[trim={0mm 0mm 0mm 0mm}, clip, width=\textwidth]{figures/illustrator/diffusion-model.pdf}
@@ -46,13 +46,13 @@ follows a Rayleigh distribution:
 \begin{align}
     \mathrm{Rayleigh}(r; \sigma) =\frac{r}{\sigma^2} e^{-r^2/(2\sigma^2)} \quad r>0,
 \end{align}
-with scale parameter $\sigma = \sqrt{2d\tau}$, where $d$ is the diffusion coefficient and $\tau$ is the time between observations \autocite{bakerInferenceDiffusionCoefficients2021,andersonTrackingCellSurface1992}
-.
+with scale parameter $\sigma = \sqrt{2d\tau}$, where $d$ is the diffusion coefficient and $\tau$ is the time between observations \autocite{andersonTrackingCellSurface1992}
+. Using Bayesian mixture models, the switch diffusion process is a simple model describing the system, \autocite{bakerInferenceDiffusionCoefficients2021}. With $K=2$ diffusion states, \autoref{fig:diffusion-model-2D} illustrates the model in directed factor graph notation \autocite{dietzDirectedFactorGraph2022}. It shows how the two diffusion coefficients, $d_1$ and $d_2$, each define their own Rayleigh distribution, $\mathcal{R}_k$, which are then combined to a mixture distribution, $\mathcal{R}_{1,2}$, with mixing probabilities $\vec{\theta}$. The measured data, $\Delta r$, are $N$ realisations from this mixture distribution.
 
 
 \begin{figure}[htbp]
     \sidecaption{
-        A graphical representation of the Bayesian model case of two diffusion components using the directed factor graph notation \parencite{dietzDirectedFactorGraph2022}. Here $d_1$ is the diffusion coefficient, $\mathcal{R}_1$ is the $d$-parameterized Rayleigh distribution and $\mathcal{R}_{1,2}$ is the mixture model of the Rayleigh distributions with a $\theta$ prior.
+        A graphical representation of the Bayesian model case of two diffusion components using the directed factor graph notation \parencite{dietzDirectedFactorGraph2022}. Here $d_1$ is the diffusion coefficient, $\mathcal{R}_1$ is the $d$-parameterized Rayleigh distribution and $\mathcal{R}_{1,2}$ is the mixture model of the Rayleigh distributions with a $\vec{\theta}$ prior.
         \label{fig:diffusion-model-2D}}
     \centering
     \begin{tikzpicture}[scale=1.5, transform shape]
@@ -64,7 +64,7 @@ with scale parameter $\sigma = \sqrt{2d\tau}$, where $d$ is the diffusion coeffi
         \factor [right=0.6 of D1]   {R1}   {above:$\mathcal{R}_1$}   {D1}  {} ; %
         \factor [right=0.6 of D2]   {R2}   {above:$\mathcal{R}_2$}   {D2}  {} ; %
 
-        \node[latent, right=1.5 of D1]   (theta)   {$\theta$}; %
+        \node[latent, right=1.5 of D1]   (theta)   {$\vec{\theta}$}; %
 
         \factor[right=2 of b] {R12} {below:$\mathcal{R}_{1,2}$} {R1,R2,theta} {} ; %
 
@@ -77,6 +77,24 @@ with scale parameter $\sigma = \sqrt{2d\tau}$, where $d$ is the diffusion coeffi
     % \rule{\hsize}{1pt}
 \end{figure}
 
+The diffusion model illustrated in \autoref{fig:diffusion-model-2D} with $K=2$ diffusion states can be extended to $K$ states, where data shows that both a simpler $K=1$ model, the $K=2$ model, and a more advanced model with $K=3$ diffusion states, all yields appropriate results. Remembering that the formation of the foci depends on the physical properties of the cell nucleus, it is important to be able to evaluate the different models since they provide different diffusion estimates.
+
+The models are compared using the Widely Applicable Information Criterion (WAIC) \parencite{watanabeAsymptoticEquivalenceBayes2010a} which is a generalized version of the Akaike information criterion (AIC), useful for Bayesian model comparison \parencite{gelmanUnderstandingPredictiveInformation2014a}. The WAIC is an approximation of the out-of-sample loss of the model and is defined as:
+\begin{align}
+    \mathrm{WAIC} = -2(\underbrace{\mathrm{lppd}}_\textrm{accuracy} - \underbrace{p_\mathrm{WAIC}}_\textrm{penalty}),
+\end{align}
+where the log-pointwise-predictive-density, $\mathrm{lppd}$, is a Bayesian version of the accuracy of the model and $p_\mathrm{WAIC}$ is a penalty term that penalizes the model for the effective number of parameters \parencite{mcelreathStatisticalRethinkingBayesian2020}. To compare two models, the model with the lowest WAIC is preferred, however, the difference between the WAICs should also be considered. The results for the WT1 dataset from Paper IV is shown in \autoref{fig:WT1_comparison_waic}. This figure shows the WAIC in black for the $K=1$, $K=2$ and $K=3$ models along with their uncertainties and it is easily seen that the model with only a single diffusion component does not perform well. The difference between the WAIC of the model and the best performing model ($K=3$) is shown in grey, $\Delta_{A,B}$, where the $z$-value above the error bars are the number of sigmas the difference is from zero:
+\begin{align}
+    z = \frac{\Delta_{A,B}}{\sigma_{\Delta_{A,B}}}.
+\end{align}
+
+Following Occam's razor, the $K=2$ model is chosen as the optimal model, since the difference between the $K=2$ model and the $K=3$ model, the best performing one, is statistically non-significant ($z<2$).
 
 
-% \AtEndEnvironment{wrapfigure}{\vskip8pt\noindent{\rule{\hsize}{1pt}}}
+\begin{figure}[htbp]
+    \sidecaption{
+        Comparison between diffusion models with $K=1$, $K=2$, or $K=3$ diffusion coefficients for the Wild Type 1 data (WT1). The x-axis shows the WAIC score, where lower values indicate higher-performing models. The WAIC-score for each model is shown in black along with its uncertainty. The difference in WAIC-scores between the model and the best performing model (WT1 K3) is shown in grey with $z$ being the number of standard deviations between them.
+        \label{fig:WT1_comparison_waic}}
+    \centering
+    \includegraphics[trim={0mm 0mm 0mm 0mm}, clip, width=\textwidth]{figures/WT1_comparison_waic.pdf}
+\end{figure}
