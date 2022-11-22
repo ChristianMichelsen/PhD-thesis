@@ -625,7 +625,7 @@
 \let\oldtoc\tableofcontents
 \renewcommand{\tableofcontents}{%
 	\begin{quote}
-		\setstretch{0.9}
+		\setstretch{1.0}
 		\oldtoc
 	\end{quote}
 }
