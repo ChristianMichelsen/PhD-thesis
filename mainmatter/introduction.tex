@@ -19,24 +19,29 @@
 \section{Diffusion Models and Bayesian Model Comparison}
 \label{section:diffusion}
 
-Since the dawn of time, humans have noticed that they looked like their siblings and parents and wondered why. People have always thought about the balance between nature and nurture, as in the famous fairy tale ``The Ugly Duckling'' by Hans Christian Andersen from 1843. Two decades later, Gregor Mendel founded genetics as a modern, scientifical discipline with his studies on trait inheritance in pea plants \autocite{mendelgregorVersucheUberPflanzenhybriden1866}, although it was not until a century later that Watson and Crick discovered the double helix structure of DNA \autocite{watsonMolecularStructureNucleic1953}.
+The similarity between family members and the degree to which siblings resemble one another has long been a mystery in human history.
+People have always thought about the balance between nature and nurture, as in the famous fairy tale ``The Ugly Duckling'' by Hans Christian Andersen from 1843. These questions was addressed two decades later, when Gregor Mendel founded genetics as a modern, scientifical discipline with his studies on trait inheritance in pea plants \autocite{mendelgregorVersucheUberPflanzenhybriden1866}.
+% although it was not until a century later that Watson and Crick discovered the double helix structure of DNA .
 
-Since then, the field of genetics has grown exponentially and has become a central part of modern biology today. While \autoref{section:ancientDNA} discusses the behaviour of ancient DNA, Paper IV focusses on how living cells work and, in particular, how they regulate the transcription of DNA in the cell nucleus. All cells share the same building blocks in the form of DNA, however, they do not express the same instructions (genes). One of the most fundamental challenges in biology is understanding the mechanism of how cells can express and silence specific regions of the genome.
+A century later a major breakthrough was when Watson and Crick discovered the double helix structure of DNA \autocite{watsonMolecularStructureNucleic1953}. This lead to other important discoveries within genetics, such as the development of DNA sequencing allowing the scientist to identify the genetic makeup for a specific cell. In 2008, the first human genome was sequenced and since then multiple Next-Generation Sequencing methods (NGS) has allowed for cheap, high-quality, in-depth sequencing of genetical samples \autocite{genomicsBriefHistoryNext2021}. Since then, the field of genetics has grown exponentially and has become a central part of modern biology today.
+
+While \autoref{section:ancientDNA} discusses the behaviour of ancient DNA, Paper IV focusses on how living cells work and, in particular, how they regulate the transcription of DNA in the cell nucleus.
+Despite the fact that all cells share DNA, the regulation and expression of the genes stored within can vary. The mechanism of the cell-specific expression and silencing of specific genomic regions are one of the most fundamental biological challenges.
 
 Currently, different biological models try to explain the physical principles creating the heterogeneous environment in the cell nucleus of eukaryotic cells.
 One of these is the polymer-bridging model (PBM) that models the micro compartments called the foci. The cell nucleus contains two different types of loci; the repair foci and the silencing foci. Paper IV studies the physical mechanism of the formation of the silencing foci.
 
-\autoref{fig:diffusion-model} illustrates the parts of the cell nucleus relevant to the polymer-bridging model. Inside the nucleus, DNA fibers are curled up and some parts of the DNA locate inside the silencing foci. Inside the silencing foci, the PBM predicts binding and bridging sites that interact with the DNA fiber through the SIR proteins, which is up-regulated inside the the region of the foci \autocite{heltbergPhysicalObservablesDetermine2021}. The SIR proteins repress the underlying genes, and, due to the increased concentration inside the focus, the foci are termed silencing foci.
+\autoref{fig:diffusion-model} illustrates the parts of the cell nucleus relevant to the polymer-bridging model. Inside the nucleus, DNA fibers are curled up and some parts of the DNA locate inside the silencing foci. Inside the silencing foci, the PBM predicts binding and bridging sites that interact with the DNA fiber through the SIR proteins, which is up-regulated inside the the region of the foci \autocite{heltbergPhysicalObservablesDetermine2021}. The silent Information Regulator (SIR) proteins repress the underlying genes, and, due to the increased concentration inside the focus, the foci are termed silencing foci.
 
 \begin{figure}[htbp]
     \sidecaption{
-        Illustration of the cell nucleus. The nucleus membrane is shown in red and the repair foci in yellow. The black line represents the DNA fiber which is curled up in the silencing foci in green. The right side of the figure shows a zoomin in view of the silencing foci according to the polymer-bridging model with the binding and bridging sites that interact with the SIR proteins. The tracking of the SIR molecules is shown as blue stars. Partly adapted from \autocite{heltbergPhysicalObservablesDetermine2021}.
+        Illustration of the cell nucleus. The nucleus membrane is shown in red and the repair foci in yellow. The black line represents the DNA fiber which is curled up in the silencing foci in green. The right side of the figure shows a zoomed in view of the silencing foci according to the polymer-bridging model with the binding and bridging sites that interact with the SIR proteins. The tracking of the SIR proteins is shown as blue stars. Partly adapted from \autocite{heltbergPhysicalObservablesDetermine2021}.
         \label{fig:diffusion-model}}
     \centering
     \includegraphics[trim={0mm 0mm 0mm 0mm}, clip, width=\textwidth]{figures/illustrator/diffusion-model.pdf}
 \end{figure}
 
-With the use of single particle tracking and photoactivated localization microscopy, it is possible to track the individual SIR molecules at high temporal and spatial resolution \autocite{oswaldImagingQuantificationTransmembrane2014,manleyHighdensityMappingSinglemolecule2008}. As the SIR molecules are assumed to follow a diffusion process, the tracking allows for the determination of the diffusion coefficients of cell nucleus, which help quantify the heterogeneous structure in the nucleus.
+With the use of single particle tracking and photoactivated localization microscopy, it is possible to track the individual SIR protein at high temporal and spatial resolution \autocite{oswaldImagingQuantificationTransmembrane2014,manleyHighdensityMappingSinglemolecule2008}. As the SIR proteins are assumed to follow a diffusion process, the tracking allows for the determination of the diffusion coefficients of cell nucleus, which help quantify the heterogeneous structure in the nucleus.
 
 Assuming classical Brownian motion in 2D, the displacement lengths, $\Delta r_i$, defined as the distances between subsequent observations $\vec{x}$:
 \begin{align}
@@ -83,12 +88,12 @@ The models are compared using the Widely Applicable Information Criterion (WAIC)
 \begin{align}
     \mathrm{WAIC} = -2(\underbrace{\mathrm{lppd}}_\textrm{accuracy} - \underbrace{p_\mathrm{WAIC}}_\textrm{penalty}),
 \end{align}
-where the log-pointwise-predictive-density, $\mathrm{lppd}$, is a Bayesian version of the accuracy of the model and $p_\mathrm{WAIC}$ is a penalty term that penalizes the model for the effective number of parameters \parencite{mcelreathStatisticalRethinkingBayesian2020}. To compare two models, the model with the lowest WAIC is preferred, however, the difference between the WAICs should also be considered. The results for the WT1 dataset from Paper IV is shown in \autoref{fig:WT1_comparison_waic}. This figure shows the WAIC in black for the $K=1$, $K=2$ and $K=3$ models along with their uncertainties and it is easily seen that the model with only a single diffusion component does not perform well. The difference between the WAIC of the model and the best performing model ($K=3$) is shown in grey, $\Delta_{A,B}$, where the $z$-value above the error bars are the number of sigmas the difference is from zero:
+where the log-pointwise-predictive-density ($\mathrm{lppd}$) is a Bayesian version of the accuracy of the model and $p_\mathrm{WAIC}$ is a penalty term that penalizes the model for the effective number of parameters \parencite{mcelreathStatisticalRethinkingBayesian2020}. To compare two models, the model with the lowest WAIC is preferred, however, the difference between the WAICs should also be considered. The results for the WT1 dataset from Paper IV is shown in \autoref{fig:WT1_comparison_waic}. This figure shows the WAIC in black for the $K_1$, $K_2$ and $K_3$ models along with their uncertainties and it is easily seen that the model with only a single diffusion component does not perform well. The difference between the WAIC of the model and the best performing model ($K_3$) is shown in grey, $\Delta_{A,B}$, where the $z$-value above the error bars are the number of sigmas the difference is from zero:
 \begin{align}
     z = \frac{\Delta_{A,B}}{\sigma_{\Delta_{A,B}}}.
 \end{align}
 
-Following Occam's razor, the $K=2$ model is chosen as the optimal model, since the difference between the $K=2$ model and the $K=3$ model, the best performing one, is statistically non-significant ($z<2$).
+Following Occam's razor, the $K_2$ model is chosen as the optimal model, since the difference between the $K_2$ model and the $K_3$ model, the best performing one, is statistically non-significant ($z<2$).
 
 
 \begin{figure}[htbp]
