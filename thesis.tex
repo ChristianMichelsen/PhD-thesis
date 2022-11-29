@@ -1,0 +1,109 @@
+\documentclass[
+    11pt,
+	colorful,
+	boxey,
+	a4paper,
+]{tufte-style-thesis}
+
+%	package inclusions for this specific documentation file. the .cls does not neet them.
+\usepackage{lipsum}		% the chad package
+\usepackage{pdfpages}
+\usepackage[super]{nth} % for the superscripted "th"
+\usepackage{xspace}     % For the \metaDMG macro
+\usepackage{siunitx}	% for the \SI macro
+\usepackage{tikz}
+\usepackage{tikzscale}
+\usepackage{subcaption}
+\usepackage{datetime2}
+\usepackage[danish,british]{babel}
+
+
+% \usepackage[			% use biblatex for bibliography
+% 	backend=biber,      % use biber or bibtex backend
+%     style=authoryear,   % choose style
+% 	natbib=true,		% allow natbib commands
+% 	hyperref=true,	    % activate hyperref support
+% 	alldates=year,      % only show year (not month)
+% 	sorting=ynt,        % sort cites by year
+% 	sortcites,
+% 	url=false,
+% ]{biblatex}
+
+
+% For expectation values
+\newcommand{\EX}[1]{\mathbb{E}\left[{#1}\right]}
+\newcommand{\VarX}[1]{\mathbb{V}\left[{#1}\right]}
+
+\newcommand{\metaDMG}{\texttt{metaDMG}\xspace}
+
+\renewcommand{\chapterautorefname}{Chapter}
+\renewcommand{\sectionautorefname}{Section}
+
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+
+\counterwithout{equation}{chapter} % remove the chapter number
+% \counterwithin{equation}{chapter}  % add the chapter number
+
+\counterwithout{figure}{section}
+
+\DeclareSIUnit\year{yr}
+\DeclareSIUnit\BP{BP}
+\DeclareSIUnit\basepairs{bp}
+
+\newcommand*\dx{\mathop{}\!\mathrm{d}}
+
+
+\usetikzlibrary{bayesnet}
+\usetikzlibrary{calc}
+
+
+% Update to your bibliography file
+\addbibresource{bibliography.bib}
+
+
+\author{Christian Michelsen}
+\title{Biological Data Science}
+\subtitle{Ancient genomics, anesthesiology, epidemiology, and a bit in between}
+\person{Supervisor}{Troels C. Petersen}{Niels Bohr Institute}
+\person{Cosupervisor}{Thorfinn S. Korneliussen}{Globe Institute}
+
+\shoutouts{Til kvinderne i mit liv}
+
+
+\begin{document}
+
+\maketitle
+
+\addtocontents{toc}{\protect\addvspace{-1.5cm}}
+\tableofcontents
+
+\frontmatter
+% \part*{Front}
+\pagenumbering{roman}
+\include{frontmatter/preface.tex}
+\include{frontmatter/abstract.tex}
+\include{frontmatter/dansk-abstract.tex}
+\include{frontmatter/publications.tex}
+\include{frontmatter/acknowledgements.tex}
+
+\mainmatter
+% \part*{Main}
+\pagenumbering{arabic}
+\include{mainmatter/introduction.tex}
+\include{backmatter/bibliography.tex}
+
+\include{mainmatter/paper-dna.tex}
+\include{mainmatter/paper-hospital.tex}
+\include{mainmatter/paper-covid.tex}
+\include{mainmatter/paper-diffusion.tex}
+
+
+\part*{Appendix}
+\appendix
+\include{mainmatter/appendix.tex}
+
+\backmatter
+% \include{backmatter/index.tex}
+
+\end{document}
