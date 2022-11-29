@@ -26,7 +26,7 @@ Despite the fact that all cells share the same DNA, the regulation and expressio
 Currently, different biological models try to explain the physical principles creating the heterogeneous environment in the cell nucleus of eukaryotic cells.
 One of these is the polymer-bridging model (PBM) that models the micro compartments called the foci. The cell nucleus contains two different types of loci; the repair foci and the silencing foci. Paper IV studies the physical mechanism of the formation of the silencing foci.
 
-\autoref{fig:diffusion-model} illustrates the parts of the cell nucleus relevant to the polymer-bridging model. Inside the nucleus, DNA fibers are curled up and some parts of the DNA locate inside the silencing foci. Inside the silencing foci, the PBM predicts binding and bridging sites that interact with the DNA fiber through the SIR proteins, which is up-regulated inside the the region of the foci \autocite{heltbergPhysicalObservablesDetermine2021}. The silent Information Regulator (SIR) proteins repress the underlying genes, and, due to the increased concentration inside the focus, the foci are termed silencing foci.
+\autoref{fig:diffusion-model} illustrates the parts of the cell nucleus relevant to the polymer-bridging model. Inside the nucleus, DNA fibers are curled up and some parts of the DNA locate inside the silencing foci. Inside the silencing foci, the PBM predicts binding and bridging sites that interact with the DNA fiber through the SIR proteins, which are up-regulated inside the the region of the foci \autocite{heltbergPhysicalObservablesDetermine2021}. The silent Information Regulator (SIR) proteins repress the underlying genes, and, due to the increased concentration inside the focus, the foci are termed silencing foci.
 
 \begin{figure}[htbp]
     \sidecaption{
@@ -47,7 +47,7 @@ follows a Rayleigh distribution:
     \mathrm{Rayleigh}(r; \sigma) =\frac{r}{\sigma^2} e^{-r^2/(2\sigma^2)} \quad r>0,
 \end{align}
 with scale parameter $\sigma = \sqrt{2d\tau}$, where $d$ is the diffusion coefficient and $\tau$ is the time between observations \autocite{andersonTrackingCellSurface1992}
-. Using Bayesian mixture models, the switch diffusion process is a simple model describing the system, \autocite{bakerInferenceDiffusionCoefficients2021}. With $K=2$ diffusion states, \autoref{fig:diffusion-model-2D} illustrates the model in directed factor graph notation \autocite{dietzDirectedFactorGraph2022}. It shows how the two diffusion coefficients, $d_1$ and $d_2$, each define their own Rayleigh distribution, $\mathcal{R}_k$, which are then combined to a mixture distribution, $\mathcal{R}_{1,2}$, with mixing probabilities $\vec{\theta}$. The measured data, $\Delta r$, are $N$ realisations from this mixture distribution.
+. Using Bayesian mixture models, the switch diffusion process is a simple model describing the system, \autocite{bakerInferenceDiffusionCoefficients2021}. With $K=2$ diffusion states, \autoref{fig:diffusion-model-2D} illustrates the model in directed factor graph notation \autocite{dietzDirectedFactorGraph2022}. It shows how the two diffusion coefficients, $d_1$ and $d_2$, each define their own Rayleigh distribution, $\mathcal{R}_k$, which are then combined to a mixture distribution, $\mathcal{R}_{1,2}$, with mixing probabilities $\vec{\theta}$. The measured data, $\Delta r$, are modelled as $N$ realisations from this mixture distribution.
 
 
 \begin{figure}[htbp]
@@ -77,18 +77,21 @@ with scale parameter $\sigma = \sqrt{2d\tau}$, where $d$ is the diffusion coeffi
     % \rule{\hsize}{1pt}
 \end{figure}
 
-The diffusion model illustrated in \autoref{fig:diffusion-model-2D} with $K=2$ diffusion states can be extended to $K$ states, where data shows that both a simpler $K=1$ model, the $K=2$ model, and a more advanced model with $K=3$ diffusion states, all yields appropriate results. Remembering that the formation of the foci depends on the physical properties of the cell nucleus, it is important to be able to evaluate the different models since they provide different diffusion estimates.
+The diffusion model illustrated in \autoref{fig:diffusion-model-2D} with $K=2$ diffusion states can be extended to $K$ states, where data shows that both a simpler $K=1$ model ($K_1$), the $K=2$ model ($K_2$), and a more advanced model with $K=3$ diffusion states ($K_3$), all yields appropriate results. Remembering that the formation of the foci depends on the physical properties of the cell nucleus, it is important to be able to evaluate the different models since they provide different diffusion estimates.
 
 The models are compared using the Widely Applicable Information Criterion (WAIC) \parencite{watanabeAsymptoticEquivalenceBayes2010a} which is a generalized version of the Akaike information criterion (AIC), useful for Bayesian model comparison \parencite{gelmanUnderstandingPredictiveInformation2014a}. The WAIC is an approximation of the out-of-sample loss of the model and is defined as:
+% \begin{align}
+%     \mathrm{WAIC} = -2(\underbrace{\mathrm{lppd}}_\textrm{accuracy} - \underbrace{p_\mathrm{WAIC}}_\textrm{penalty}),
+% \end{align}
 \begin{align}
-    \mathrm{WAIC} = -2(\underbrace{\mathrm{lppd}}_\textrm{accuracy} - \underbrace{p_\mathrm{WAIC}}_\textrm{penalty}),
+    \mathrm{WAIC} = -2(\mathrm{lppd} - p_\mathrm{WAIC}),
 \end{align}
 where the log-pointwise-predictive-density ($\mathrm{lppd}$) is a Bayesian version of the accuracy of the model and $p_\mathrm{WAIC}$ is a penalty term that penalizes the model for the effective number of parameters \parencite{mcelreathStatisticalRethinkingBayesian2020}. To compare two models, the model with the lowest WAIC is preferred, however, the difference between the WAICs should also be considered. The results for the WT1 dataset from Paper IV is shown in \autoref{fig:WT1_comparison_waic}. This figure shows the WAIC in black for the $K_1$, $K_2$ and $K_3$ models along with their uncertainties and it is easily seen that the model with only a single diffusion component does not perform well. The difference between the WAIC of the model and the best performing model ($K_3$) is shown in grey, $\Delta_{A,B}$, where the $z$-value above the error bars are the number of sigmas the difference is from zero:
 \begin{align}
     z = \frac{\Delta_{A,B}}{\sigma_{\Delta_{A,B}}}.
 \end{align}
 
-Following Occam's razor, the $K_2$ model is chosen as the optimal model, since the difference between the $K_2$ model and the $K_3$ model, the best performing one, is statistically non-significant ($z<2$).
+Following Occam's razor, the $K_2$ model is chosen as the optimal model, since the difference between the $K_2$ model and the $K_3$ model, the best performing one, is statistically non-significant ($z=0.57<2$).
 
 
 \begin{figure}[htbp]
