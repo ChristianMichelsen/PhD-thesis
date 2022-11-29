@@ -120,7 +120,8 @@
 	natbib=true,				% allow natbib commands
 	alldates=year,      		% only show year (not month)
 	autocite=inline,			% parencite-like citations
-	sorting=nyt,				% sort by  name, year, title.
+	sorting=ynt,				% sort by  year, name, title.
+	sortcites,
 	% maxbibnames=5,				% max number of authors
 	% minbibnames=2,				% min number of authors
 ]{biblatex}
