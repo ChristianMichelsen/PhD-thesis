@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"terminal.integrated.shell.windows": "state",
+		"terminal.integrated.shellArgs.windows": [
+			"activate",
+			"--confirm-exit-on-error",
+			"--non-interactive",
+			"--output=simple"
+		]
+	}
+}
